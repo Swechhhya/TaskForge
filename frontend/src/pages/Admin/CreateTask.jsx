@@ -2,10 +2,8 @@ import React from 'react'
 
 const CreateTask = () => {
   return (
-    <div>
-      
-    </div>
-  )
+ <div>CreateTask</div>
+)
 }
 
 export default CreateTask
