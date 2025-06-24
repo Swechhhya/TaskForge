@@ -2,10 +2,8 @@ import React from 'react'
 
 const ManageTasks = () => {
   return (
-    <div>
-      
-    </div>
-  )
+  <div>ManageTasks</div>
+ )
 }
 
 export default ManageTasks

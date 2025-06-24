@@ -2,10 +2,9 @@ import React from 'react'
 
 const ManageUsers = () => {
   return (
-    <div>
-      
-    </div>
-  )
+<div>ManageUsers</div>
+)
 }
 
 export default ManageUsers
+
