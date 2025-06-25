@@ -1,5 +1,22 @@
+import { useContext } from 'react';
 import AuthLayout from '../../components/layouts/AuthLayout';
+import { UserContext } from '../../context/userContext';
+import { API_PATHS } from '../../utils/apiPaths';
+import axiosInstance from '../../utils/axiosInstance';
+import { useNavigate } from 'react-router-dom';
+
+
+
+
+
+
 const Login = () => {
+
+
+
+
+    const {updateUser} = useContext(UserContext)
+    const navigate = useNavigate();
         // Login API Call
 try {
     const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
@@ -11,6 +28,7 @@ try {
 
     if (token) {
         localStorage.setItem("token", token);
+        updateUser(response.data);
 
         // Redirect based on role
         if (role === "admin") {
