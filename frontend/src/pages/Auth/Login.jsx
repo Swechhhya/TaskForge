@@ -1,6 +1,6 @@
 import AuthLayout from '../../components/layouts/AuthLayout';
 const Login = () => {
-          {/* // Login API Call
+        // Login API Call
 try {
     const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
         email,
@@ -25,7 +25,8 @@ try {
     } else {
         setError("Something went wrong. Please try again.");
     }
-} */}
+} 
+
   return <AuthLayout>Login</AuthLayout>
   }
 
