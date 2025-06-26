@@ -1,15 +1,26 @@
-import React from 'react'
-import UI_IMG from '../../assets/images/ui-img.png'  
-const AuthLayout = ({children}) => {
-    return <div className="flex">
-        <div className="w-screen h-screen md:w-[60vw] px-12 pt-8 pb-12">
-            <h2 className="text-lg font-medium text-black">Task Manager</h2>
-            {children}
-        </div>
+import React from 'react';
+import UI_IMG from '../../assets/images/bg-img.png';
 
-   <div className="hidden md:flex w-[40vw] h-screen items-center justify-center bg-blue-50 bg-[url('/bg-img.png')] bg-cover bg-no-repeat bg-center overflow-hidden p-8 ">
-   <img src={UI_IMG} className="w-64 lg:w-[90%]" />
+const AuthLayout = ({ children }) => {
+  console.log("Background Image Path:", UI_IMG);
+
+  return (
+    <div
+      className="w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url("${UI_IMG}")`,
+      }}
+    >
+      <div className="bg-white bg-opacity-80 rounded-lg p-8 w-[90%] md:w-[60vw] h-[90%] overflow-auto shadow-lg">
+        <h2 className="text-xl font-semibold text-black mb-4">Task Manager</h2>
+        {children}
+      </div>
     </div>
-    </div>
+  );
 };
-export default AuthLayout
+
+export default AuthLayout;
+
+
+
+
