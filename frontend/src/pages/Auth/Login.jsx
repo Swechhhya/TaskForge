@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import AuthLayout from '../../components/layouts/AuthLayout';
+import AuthLayout from '../../components/layouts/layouts/AuthLayout';
 import { UserContext } from '../../context/userContext';
 import { API_PATHS } from '../../utils/apiPaths';
 import axiosInstance from '../../utils/axiosInstance';
