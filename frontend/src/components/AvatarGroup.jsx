@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const AvatarGroup = ({ avatars, maxVisible = 3 }) => {
   return (
@@ -17,7 +17,7 @@ const AvatarGroup = ({ avatars, maxVisible = 3 }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default AvatarGroup
+export default AvatarGroup;

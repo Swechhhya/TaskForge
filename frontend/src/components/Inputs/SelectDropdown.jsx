@@ -9,15 +9,22 @@ const SelectDropdown = ({ options, value, onChange, placeholder }) => {
     setIsOpen(false);
   };
 
-  return <div className="relative w-full">
+  return (
+    <div className="relative w-full">
       {/* Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full text-sm text-black outline-none bg-white border border-slate-100 rounded-md px-2.5 py-3 mt-2 flex items-center justify-between"
       >
-        {value ? options.find((opt) => opt.value === value)?.label : placeholder}
+        {value
+          ? options.find((opt) => opt.value === value)?.label
+          : placeholder}
         <span className="ml-2">
-          {isOpen ? <LuChevronDown className="rotate-180" /> : <LuChevronDown />}
+          {isOpen ? (
+            <LuChevronDown className="rotate-180" />
+          ) : (
+            <LuChevronDown />
+          )}
         </span>
       </button>
 
@@ -36,7 +43,7 @@ const SelectDropdown = ({ options, value, onChange, placeholder }) => {
         </div>
       )}
     </div>
-
+  );
 };
 
 export default SelectDropdown;

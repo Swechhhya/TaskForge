@@ -33,21 +33,21 @@ const UserProvider = ({ children }) => {
   }, []);
 
   const updateUser = (userData) => {
-  setUser(userData);
-  localStorage.setItem("token", userData.token); // Save token
-  setLoading(false);
+    setUser(userData);
+    localStorage.setItem("token", userData.token); // Save token
+    setLoading(false);
+  };
+
+  const clearUser = () => {
+    setUser(null);
+    localStorage.removeItem("token");
+  };
+
+  return (
+    <UserContext.Provider value={{ user, loading, updateUser, clearUser }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
-const clearUser = () => {
-  setUser(null);
-  localStorage.removeItem("token");
-};
-
-return (
-  <UserContext.Provider value={{ user, loading, updateUser, clearUser }}>
-    {children}
-  </UserContext.Provider>
-);
-}
-
-export default UserProvider
+export default UserProvider;
