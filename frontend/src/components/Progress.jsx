@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Progress = (progress, status) => {
+const Progress = ({progress, status}) => {
 
 const getColor = () => {
   switch (status) {

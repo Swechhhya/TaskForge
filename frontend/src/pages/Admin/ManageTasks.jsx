@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
 import { API_PATHS } from '../../utils/apiPaths';
 import { LuFileSpreadsheet } from 'react-icons/lu';
-import TaskStatusTabs from '../../components/layouts/TaskStatusTabs';
 import TaskCard from '../../components/cards/TaskCard';
+import TaskStatusTabs from '../../components/TaskStatusTabs';
 
 const ManageTasks = () => {
 
@@ -72,6 +72,7 @@ useEffect(() => {
   getAllTasks(filterStatus);
   return() => {};
 }, [filterStatus]);
+
   return (
   <DashboardLayout   activeMenu="Manage Tasks">
     <div className='my-5'>

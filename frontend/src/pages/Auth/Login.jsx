@@ -1,70 +1,62 @@
-import React, { useState ,useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Input from '../../components/layouts/Inputs/Input';
-import AuthLayout from '../../components/layouts/layouts/AuthLayout';
-import { API_PATHS } from '../../utils/apiPaths';
-import axiosInstance from '../../utils/axiosInstance';
-import { UserContext } from '../../context/userContext';
-import { validateEmail } from '../../utils/validation';
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Input from "../../components/layouts/Inputs/Input";
+import { API_PATHS } from "../../utils/apiPaths";
+import axiosInstance from "../../utils/axiosInstance";
+import { UserContext } from "../../context/userContext";
+import { validateEmail } from "../../utils/validation";
+import AuthLayout from "../../components/layouts/AuthLayout";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-    const {updateUser} = useContext(UserContext)
-    const navigate = useNavigate();
+  const { updateUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   // Handle Login function
   const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!validateEmail(email)) {
-      setError('Please enter a valid email address.');
+      setError("Please enter a valid email address.");
       return;
     }
     if (!password) {
-      setError('Please enter your password.');
+      setError("Please enter your password.");
       return;
     }
 
-    setError(''); 
-        
+    setError("");
+
     // Login API Call
-try {
-    const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+    try {
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
         email,
         password,
-    });
+      });
 
-    const { token, role } = response.data;
+      const { token, role } = response.data;
 
-    if (token) {
+      if (token) {
         localStorage.setItem("token", token);
         updateUser(response.data);
 
         // Redirect based on role
         if (role === "admin") {
-            navigate("/admin/dashboard");
+          navigate("/admin/dashboard");
         } else {
-            navigate("/user/dashboard");
+          navigate("/user/dashboard");
         }
-    }
-} catch (error) {
-    if (error.response && error.response.data.message) {
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
         setError(error.response.data.message);
-    } else {
+      } else {
         setError("Something went wrong. Please try again.");
+      }
     }
-} 
-    
-  // Clear any previous errors
- 
-    // TODO: Add your login logic here (e.g., call API)
-    console.log('Logging in with:', email, password);
-
-    // Example navigation after successful login:
-    navigate('/dashboard');
   };
 
   return (
@@ -98,14 +90,13 @@ try {
             LOGIN
           </button>
 
-<p className="text-[13px] text-slate-800 mt-3">
-  Don't have an account?{" "}
-  <Link className="font-medium text-primary underline" to="/signup">
-    SignUp
-  </Link>
-</p>
-
-          </form>
+          <p className="text-[13px] text-slate-800 mt-3">
+            Don't have an account?{" "}
+            <Link className="font-medium text-primary underline" to="/signup">
+              SignUp
+            </Link>
+          </p>
+        </form>
       </div>
     </AuthLayout>
   );

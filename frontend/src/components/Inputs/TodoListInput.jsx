@@ -40,7 +40,7 @@ const TodoListInput = ({ todoList, setTodoList }) => {
  </div>
       ))}
 
-<div className="flex items-centre gap mt-4">
+<div className="flex items-center gap mt-4">
   <input type="text" 
   placeholder="Enter Task"
   value={option}

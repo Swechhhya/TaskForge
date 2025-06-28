@@ -4,10 +4,10 @@ import AvatarGroup from "../AvatarGroup";
 import { LuPaperclip } from "react-icons/lu";
 import moment from "moment";
 
-const TaskCard = (title, description,
-        priority,status,progress,createdAt,dueDate,assignedToattachments,
+const TaskCard = ({title, description,
+        priority,status,progress,createdAt,dueDate,assignedTo, attachmentCount,
         completedTodoCount,
-        todoChecklist,onClick) => {
+        todoChecklist,onClick}) => {
 
             const getStatusTagColor = () => {
   switch (status) {

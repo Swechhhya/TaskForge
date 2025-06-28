@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { API_PATHS } from "../../utils/apiPaths";
 import axiosInstance from "../../utils/axiosInstance";
 import { LuUser } from "react-icons/lu";
-import Modal from "../layouts/Modal";
-import AvatarGroup from "../layouts/AvatarGroup";
+import Modal from "../Modal";
+import AvatarGroup from "../AvatarGroup";
 
 const SelectUsers = ({ selectedUsers, setSelectedUsers }) => {
   const [allUsers, setAllUsers] = useState([]);

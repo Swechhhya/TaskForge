@@ -17,7 +17,7 @@ const SelectDropdown = ({ options, value, onChange, placeholder }) => {
       >
         {value ? options.find((opt) => opt.value === value)?.label : placeholder}
         <span className="ml-2">
-          {isOpen ? <LuChevronDown classNarotate-180me="" /> : <LuChevronDown />}
+          {isOpen ? <LuChevronDown className="rotate-180" /> : <LuChevronDown />}
         </span>
       </button>
 

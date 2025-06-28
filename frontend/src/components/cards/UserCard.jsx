@@ -1,4 +1,5 @@
 import React from 'react'
+import StatCard from './StatCard';
 
 function UserCard({userInfo}) {
   return (
@@ -38,6 +39,10 @@ function UserCard({userInfo}) {
 };
 
 export default UserCard;
+const StatCard = ({ label, count, status }) => {
+  if (!label || !count || !status) return null;
+
+  // Function to determine the color based on status
 const getStatusTagColor = () => {
   switch (status) {
     case "In Progress":
@@ -56,3 +61,4 @@ return (
     <span className='text-[12px] font-semibold'>{count}</span> <br /> {label}
   </div>
 );
+}

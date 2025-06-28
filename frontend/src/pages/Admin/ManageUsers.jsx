@@ -53,7 +53,7 @@ useEffect(() => {
   <div className="flex md:flex-row md:items-center justify-between">
     <h2 className="text-xl md:text-xl font-medium">Team Members</h2>
 
-    <button className="flex md:flex download-btn" onClick={handleDownload}>
+    <button className="flex md:flex download-btn" onClick={handleDownloadReport}>
             <LuFileSpreadsheet className="text-lg" />
       
       Download Report
@@ -67,7 +67,7 @@ useEffect(() => {
   </div>
 </div>
     </DashboardLayout>
-)
+);
 }
 
 export default ManageUsers

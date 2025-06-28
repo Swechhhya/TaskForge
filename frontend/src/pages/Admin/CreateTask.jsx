@@ -7,12 +7,13 @@ import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment";
 import { LuTrash2 } from "react-icons/lu";
-import SelectDropdown from "../../components/layouts/Inputs/SelectDropdown";
-import SelectUsers from "../../components/layouts/Inputs/SelectUsers";
-import TodoListInput from "../../components/layouts/Inputs/TodoListInput";
-import AddAttachmentsInput from "../../components/layouts/Inputs/AddAttachmentsInput";
-import Modal from "../../components/layouts/Modal";
-import DeleteAlert from "../../components/layouts/DeleteAlert";
+
+import Modal from "../../components/Modal";
+import DeleteAlert from "../../components/DeleteAlert";
+import SelectDropdown from "../../components/Inputs/SelectDropdown";
+import SelectUsers from "../../components/Inputs/SelectUsers";
+import TodoListInput from "../../components/Inputs/TodoListInput";
+import AddAttachmentsInput from "../../components/Inputs/AddAttachmentsInput";
 
   const CreateTask = () => {
   const location = useLocation();
@@ -48,7 +49,7 @@ import DeleteAlert from "../../components/layouts/DeleteAlert";
       priority: "Low",
       dueDate: null,
       assignedTo: [],
-      todoCheckList: [],
+      todoChecklist: [],
       attachments: [],
     });
   };
@@ -117,13 +118,17 @@ toast.success("Task Updated Successfully");
 
     //Input validation
     if(!taskData.title.trim()) {
+      setError("Title is required.");
+      return;
+    }
+    if(!taskData.description.trim()) {
       setError("Description is required.");
       return;
     }
-    if(!taskData.dueDate()) {
+    if(!taskData.dueDate) {
       setError("Due date is required.");
       return;
-    }if(!taskData.assignedTo?.length=== 0()) {
+    }if(!taskData.assignedTo?.length=== 0) {
       setError("Task isnot assigned to any member.");
       return;
     }
@@ -220,20 +225,6 @@ toast.success("Task Updated Successfully");
               />
             </div>
 
-            <div className="mt-3">
-              <label className="text-xs font-medium text-slate-600">
-                Description
-              </label>
-              <textarea
-                placeholder="Describe task"
-                className="form-input"
-                rows={4}
-                value={taskData.description}
-                onChange={({ target }) =>
-                  handleValueChange("description", target.value)
-                }
-              ></textarea>
-            </div>
             <div className="mt-3">
               <label className="text-xs font-medium text-slate-600">
                 Description

@@ -13,7 +13,7 @@ return <div className="my-2">
       } cursor-pointer`}
       onClick={() => setActiveTab(tab.label)}
     >
-      <div className="flex items-centre">
+      <div className="flex items-center">
         <span className="text-xs">{tab.label}</span>
       <span
         className={`text-xs ml-2 px-2 py-0.5 rounded-full ${
