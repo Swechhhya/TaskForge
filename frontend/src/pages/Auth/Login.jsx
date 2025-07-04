@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Input from "../../components/layouts/Inputs/Input";
+import Input from "../../components/Inputs/Input";
 import { API_PATHS } from "../../utils/apiPaths";
 import axiosInstance from "../../utils/axiosInstance";
 import { UserContext } from "../../context/userContext";
