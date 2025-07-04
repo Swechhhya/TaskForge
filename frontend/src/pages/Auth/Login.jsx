@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Inputs/Input";
@@ -84,6 +85,92 @@ const Login = () => {
             placeholder="Min 8 characters"
           />
 
+=======
+import React, { useState } from 'react';
+import AuthLayout from '../../components/layouts/AuthLayout';
+import { Link, useNavigate } from 'react-router-dom';
+import { ValidateEmail } from '../../utils/helper';
+import axiosInstance from '../../utils/axiosInstance';
+import { API_PATHS } from '../../utils/apiPaths';
+import Input from '../../components/Inputs/Input';
+
+const Login = () =>{
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  const [error,setError] = useState(null);
+
+  const navigate = useNavigate();
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!validateEmail(email)) {
+      setError ('Please enter a valid email address.');
+      return;
+    }
+  
+    if (!password) {
+      setError('Please eneter the password');
+      return;
+    }
+
+    setError('');
+
+   /* // Login API Call
+try {
+    const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+        email,
+        password,
+    });
+
+    const { token, role } = response.data;
+
+    if (token) {
+        localStorage.setItem("token", token);
+
+        // Redirect based on role
+        if (role === "admin") {
+            navigate("/admin/dashboard");
+        } else {
+            navigate("/user/dashboard");
+        }
+    }
+} catch (error) {
+    if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+    } else {
+        setError("Something went wrong. Please try again.");
+    }
+  }
+  */
+  // End of commented-out login API call
+  }
+  
+  return(
+    <AuthLayout>
+      <div className="lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center">
+        <h3 className="text-xl font-semibold text-black">Welcome Back</h3>
+        <p className="text-xs text-slate-700 mt-[7px] mb-5">
+          Please enter your details to log in
+        </p>
+
+        <form onSubmit={handleLogin}>
+          <Input
+            type="text"
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
+            label="Email Address"
+            placeholder="jack@example.com"
+          />
+
+          <Input
+            type="password"
+            value={password}
+            onChange={({ target }) => setPassword(target.value)}
+            label="Password"
+            placeholder="Min 8 characters"
+          />
+
+>>>>>>> eb05e4ba5461775a15b71dcbefafe6f5ed3d2a25
           {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
 
           <button type="submit" className="btn-primary">
@@ -96,10 +183,18 @@ const Login = () => {
               SignUp
             </Link>
           </p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> eb05e4ba5461775a15b71dcbefafe6f5ed3d2a25
         </form>
       </div>
     </AuthLayout>
   );
 };
 
+<<<<<<< HEAD
 export default Login;
+=======
+export default Login;
+>>>>>>> eb05e4ba5461775a15b71dcbefafe6f5ed3d2a25
