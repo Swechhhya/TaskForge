@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-import React from "react";
-import { useUserAuth } from "../../hooks/useUserAuth";
 
-const UserDashboard = () => {
-  useUserAuth();
-  return <div>UserDashBoard</div>;
-};
-=======
 import React, { useState, useEffect } from 'react';
 import { useUserAuth } from '../../hooks/useUserAuth';
 import { useContext } from 'react';
@@ -172,7 +164,5 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
->>>>>>> eb05e4ba5461775a15b71dcbefafe6f5ed3d2a25
 
 export default UserDashboard;

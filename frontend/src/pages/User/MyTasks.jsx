@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-import React from "react";
 
-const MyTasks = () => {
-  return <div>MyTasks</div>;
-};
-=======
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { useNavigate } from "react-router-dom";
@@ -99,7 +93,3 @@ const MyTasks = () => {
 
 export default MyTasks;
 
-
->>>>>>> eb05e4ba5461775a15b71dcbefafe6f5ed3d2a25
-
-export default MyTasks;

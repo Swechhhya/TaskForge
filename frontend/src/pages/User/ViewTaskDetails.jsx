@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-import React from "react";
 
-const ViewTaskDetails = () => {
-  return <div>ViewTaskDetails</div>;
-};
-=======
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosInstance';
@@ -133,6 +127,4 @@ const InfoBox = ({label, value})=>{
 }
 
 
->>>>>>> eb05e4ba5461775a15b71dcbefafe6f5ed3d2a25
 
-export default ViewTaskDetails;

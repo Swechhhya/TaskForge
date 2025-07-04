@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-import React from "react";
 
-function Input() {
-  return <div></div>;
-}
-
-export default Input;
-=======
 import React, { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
@@ -52,4 +44,3 @@ const Input = ({ value, onChange, label, placeholder, type }) => {
 };
 
 export default Input;
->>>>>>> eb05e4ba5461775a15b71dcbefafe6f5ed3d2a25

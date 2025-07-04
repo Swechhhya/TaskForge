@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import React from "react";
 
-function ProfilePhotoSelector() {
-  return <div></div>;
-}
 
-export default ProfilePhotoSelector;
-=======
+
+
 import React, { useRef, useState } from 'react';
 import { LuUser, LuUpload, LuTrash } from 'react-icons/lu';
 
@@ -72,4 +67,3 @@ return <div className='flex items-center justify-center w-full h-full'>
   
 export default ProfilePhotoSelector;
 
->>>>>>> eb05e4ba5461775a15b71dcbefafe6f5ed3d2a25
