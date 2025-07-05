@@ -1,5 +1,5 @@
-import React from 'react'
-import moment from 'moment'
+import React from 'react';
+import moment from 'moment';
 const TaskListTable = ({tableData}) => {
     const getStatusBadgeColor = (status) => {
         switch (status) {
@@ -49,4 +49,4 @@ const TaskListTable = ({tableData}) => {
 )
 }
 
-export default TaskListTable
+export default TaskListTable;
