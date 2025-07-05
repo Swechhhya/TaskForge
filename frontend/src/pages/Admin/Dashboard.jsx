@@ -6,7 +6,7 @@ import  DashboardLayout  from '../../components/layouts/DashboardLayout';
 import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../../utils/axiosInstance'; // Make sure this path is correct
 import { API_PATHS } from '../../constants/apiPaths'; // Make sure this path is correct
-import moment from moment
+import moment from 'moment';
 import InfoCard from '../../components/Cards/InfoCard';
 import { addThousandsSeparator } from '../../utils/helper';
 import { LuArrowRight } from 'react-icons/lu';
@@ -39,13 +39,13 @@ const Dashboard = () => {
 
     setPieChartData(taskDistributionData);
 
-    const PriorityLevelData = [
+    const priorityLevelData = [
       { priority: 'Low', count: taskPriorityLevels?.Low || 0},
       { priority: 'Medium', count: taskPriorityLevels?.Medium || 0},
       { priority: 'High', count: taskPriorityLevels?.High || 0},
     ];
 
-     setBarChartData(PriorityLevelData);
+     setBarChartData(priorityLevelData);
   };
 
   const getDashboardData = async () => {
@@ -68,7 +68,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     getDashboardData();
-    return () => {};
   }, []);
 
   return (
@@ -78,7 +77,7 @@ const Dashboard = () => {
         <div className='col-span-3'>
           <h2 className='text-xl md:text-2xl '>Good Morning! {user?.name}</h2>
           <p className='text-xs md:text-[13px] text-gray-400 mt-1.5'>
-             {moment().format('dddd Do MMM YYY')}
+             {moment().format('dddd Do MMM YYYY')}
           </p>
         </div>
       </div>
@@ -123,7 +122,7 @@ const Dashboard = () => {
        <div>
         <div className='card'>
           <div className='flex items-center justify-between'>
-            <h5 classNaame='font-medium'>Task Distribution</h5>
+            <h5 className='font-medium'>Task Distribution</h5>
           </div>
         
          <CustomPieChart
@@ -148,7 +147,7 @@ const Dashboard = () => {
       <div className='md:col-span-2'>
         <div className='card'>
           <div className='flex items-center justify-between'>
-            <h5 className='text-lg'>Recenet Tasks</h5>
+            <h5 className='text-lg'>Recent Tasks</h5>
 
             <button className='card-btn' onClick={onSeeMore}>
               See All <LuArrowRight className='text-base' />
