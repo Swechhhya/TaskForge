@@ -1,7 +1,3 @@
-
-
-
-
 import React, { useRef, useState } from 'react';
 import { LuUser, LuUpload, LuTrash } from 'react-icons/lu';
 
@@ -26,7 +22,16 @@ const handleRemoveImage = () => {
 const onChooseFile = () => {
     inputRef.current.click();
 };
-return <div className='flex items-center justify-center w-full h-full'>
+useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
+
+return (
+ <div className='flex items-center justify-center w-full h-full'>
     <input
         type='file'
         accept='image/*'
@@ -62,8 +67,9 @@ return <div className='flex items-center justify-center w-full h-full'>
                     </button>
                 </div>
              )}
-    </div>  
- };     
+    </div> 
+  ); 
+};     
   
 export default ProfilePhotoSelector;
 

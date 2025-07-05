@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import { BASE_URL } from './apiPaths';
 
 const axiosInstance = axios.create({
@@ -26,14 +26,10 @@ axiosInstance.interceptors.request.use(
 
 // Response Interceptor
 axiosInstance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response,
   (error) => {
-    // Handle common errors globally
     if (error.response) {
       if (error.response.status === 401) {
-        // Redirect to login page
         window.location.href = "/login";
       } else if (error.response.status === 500) {
         console.error("Server error. Please try again later.");

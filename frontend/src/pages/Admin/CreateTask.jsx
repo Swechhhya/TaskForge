@@ -26,7 +26,7 @@ const CreateTask = () => {
     priority: "Low",
     dueDate: null,
     assignedTo: [],
-    todoCheckList: [],
+    todoChecklist: [],
     attachments: [],
   });
   const [currentTask, setCurrentTask] = useState(null);
@@ -287,7 +287,7 @@ const CreateTask = () => {
               </label>
               <TodoListInput
                 todoList={taskData?.todoChecklist}
-                setTodoList={(value) =>
+                setTodolist={(value) =>
                   handleValueChange("todoChecklist", value)
                 }
               />

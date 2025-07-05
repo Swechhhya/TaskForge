@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 const CustomLegend = ({payload}) => {
     return (
-     <div className='flex flex-wrap justify-center gap-2 mt-4 space-x-6 '>
+     <div className='flex flex-wrap justify-center gap-2 mt-4'>
      {payload.map((entry, index) => (
         <div key={`legend-${index}`} className='flex items-center space-x-2'>
           <div
@@ -15,7 +15,7 @@ const CustomLegend = ({payload}) => {
         </div>
       ))}
      </div>
-  )
-}
+  );
+};
 
-export default CustomLegend
+export default CustomLegend;

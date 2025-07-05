@@ -6,9 +6,9 @@ import { UserContext } from '../../context/userContext';
 import  DashboardLayout  from '../../components/layouts/DashboardLayout';
 import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../../utils/axiosInstance'; // Make sure this path is correct
-import { API_PATHS } from '../../constants/apiPaths'; // Make sure this path is correct
-import moment from moment
-import InfoCard from '../../components/Cards/InfoCard';
+import { API_PATHS } from '../../utils/apiPaths'; // Make sure this path is correct
+import moment from 'moment';
+import InfoCard from '../../components/Cards/InfoCards';
 import { addThousandsSeparator } from '../../utils/helper';
 import { LuArrowRight } from 'react-icons/lu';
 import TaskListTable from '../../components/TaskListTable';
@@ -16,7 +16,7 @@ import CustomPieChart from '../../components/Charts/CustomPieChart';
 
 const COLORS = ['#8D51FF', '#00B8DB', '#7BCE00'];
 
-const Dashboard = () => {
+const UserDashboard = () => {
   useUserAuth();
 
   const { user } = useContext(UserContext);

@@ -39,7 +39,7 @@ function UserCard({ userInfo }) {
 }
 
 export default UserCard;
-const StatCard = ({ label, count, status }) => {
+const UserStatCard = ({ label, count, status }) => {
   if (!label || !count || !status) return null;
 
   // Function to determine the color based on status
