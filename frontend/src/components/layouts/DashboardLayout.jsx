@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 import React, { useContext } from "react";
 import UserContext from "../context/userContext";
 import Navbar from "./Navbar";
@@ -51,4 +49,4 @@ return (
    );
  };
  export default DashboardLayout;
->>>>>>>>> Temporary merge branch 2
+
