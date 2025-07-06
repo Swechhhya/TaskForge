@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import axiosInstance from "../../utils/axiosInstance";
+import axiosInstance from '/src/utils/axiosInstance.js';
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userContext";
 import { Link, useNavigate } from "react-router-dom";
