@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../utils/axiosInstance";
+import axiosInstance from '/src/utils/axiosInstance.js';
 import { API_PATHS } from "../../utils/apiPaths";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import TaskStatusTabs from "../../components/TaskStatusTabs";
