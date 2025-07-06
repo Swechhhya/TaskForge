@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../context/userContext';
 import  DashboardLayout  from '../../components/layouts/DashboardLayout';
 import { useNavigate } from 'react-router-dom';
-import { axiosInstance } from '../../utils/axiosInstance'; // Make sure this path is correct
+import axiosInstance from '/src/utils/axiosInstance.js'; // Make sure this path is correct
 import { API_PATHS } from '../../utils/apiPaths'; // Make sure this path is correct
 import moment from 'moment';
 import InfoCard from '../../components/Cards/InfoCards';
