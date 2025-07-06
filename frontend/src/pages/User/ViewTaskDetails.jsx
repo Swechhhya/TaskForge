@@ -6,7 +6,7 @@ import { API_PATHS } from '../../utils/apiPaths';
 import DashboardLayout from '../../components/layouts/DashboardLayout';
 import AvatarGroup from '../../components/AvatarGroup';
 import moment from 'moment';
-import { LuSquareArrowOutUpRights } from 'react-icons/lu';
+import { LuSquareArrowOutUpRight } from 'react-icons/lu';
 
 const ViewTaskDetails = () => {
     const { id } = useParams();
@@ -27,7 +27,7 @@ const ViewTaskDetails = () => {
     const getTaskDetailsByID = async () => {
       try {
         const response = await axiosInstance.get(
-          API_PATHS>TASKS>GET_TASK_BY_ID(id)
+          API_PATHS>task>GET_TASK_BY_ID(id)
         );
 
         if (response.data) {
