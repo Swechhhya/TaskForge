@@ -3,7 +3,7 @@ import { useUserAuth } from '../../hooks/useUserAuth';
 import { UserContext } from '../../context/userContext';
 import DashboardLayout from '../../components/layouts/DashboardLayout';
 import { useNavigate } from 'react-router-dom';
-import { axiosInstance } from '../../utils/axiosInstance';
+import axiosInstance from '/src/utils/axiosInstance.js';
 import { API_PATHS } from '../../constants/apiPaths';
 import moment from 'moment';
 import { LuArrowRight } from 'react-icons/lu';
