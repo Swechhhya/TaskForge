@@ -1,7 +1,12 @@
+
+@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
 
-/* Remove these lines if not using Tailwind CSS, or ensure your build tool is configured to process Tailwind directives. */
-
+@theme{
+  --font-display: "Poppins", "sans-serif";
+  --breakpoint-3xl: 1920px;
+  --color-primary: #1368EC;
+}
 @layer base {
   html {
     font-family: "Poppins", sans-serif;
@@ -15,176 +20,42 @@
 
 @layer components {
   .card-btn-fill {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    font-size: 12px;
-    font-weight: 500;
-    color: #fff;
-    background-color: #3b82f6; /* fallback for primary */
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.375rem;
-    padding-bottom: 0.375rem;
-    border-radius: 0.5rem;
-    border: 1px solid #3b82f6; /* fallback for primary */
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-  }
-  .card-btn-fill:hover {
-    background-color: #eff6ff; /* blue-50 */
-    color: #3b82f6; /* primary */
+    @apply flex items-center justify-center gap-3 text-[12px] font-medium text-white hover:bg-blue-50 px-4 py-1.5 rounded-lg border border-primary cursor-pointer;
   }
 
   .form-card {
-    background-color: #fff;
-    padding: 1.5rem;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(156, 163, 175, 0.1), 0 2px 4px -2px rgba(156, 163, 175, 0.1);
-    border: 1px solid rgba(229, 231, 235, 0.5);
+    @apply bg-white p-6 rounded-b-lg shadow-md shadow-gray-100 border-gray-200/50;
   }
 
   .form-input {
-    width: 100%;
-    font-size: 0.875rem; /* text-sm */
-    color: #000; /* text-black */
-    outline: none;
-    background-color: #fff; /* bg-white */
-    border: 1px solid #f1f5f9; /* border-slate-100 */
-    padding-left: 0.625rem; /* px-2.5 */
-    padding-right: 0.625rem; /* px-2.5 */
-    padding-top: 0.75rem; /* py-3 */
-    padding-bottom: 0.75rem; /* py-3 */
-    border-radius: 0.375rem; /* rounded-md */
-    margin-top: 0.5rem; /* mt-2 */
-  }
-  .form-input::placeholder {
-    color: #6b7280; /* placeholder:text-gray-500 */
+    @apply w-full text-sm text-black outline-none bg-white border border-slate-100 px-2.5 py-3 rounded-md mt-2 placeholder:text-gray-500;
   }
 
   .add-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.375rem; /* gap-1.5 */
-    font-size: 0.75rem; /* text-xs */
-    font-weight: 500; /* font-medium */
-    color: #3b82f6; /* text-primary */
-    white-space: nowrap;
-    background-color: #eff6ff; /* bg-blue-50 */
-    border: 1px solid #dbeafe; /* border-blue-100 */
-    border-radius: 0.5rem; /* rounded-lg */
-    padding-left: 1rem; /* px-4 */
-    padding-right: 1rem; /* px-4 */
-    padding-top: 0.5rem; /* py-2 */
-    padding-bottom: 0.5rem; /* py-2 */
-    cursor: pointer;
+    @apply w-full flex items-center justify-center gap-1.5 text-xs md:text-sm font-medium text-primary whitespace-nowrap bg-blue-50 border border-blue-100 rounded-lg px-4 py-2 cursor-pointer;
   }
 
   .download-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem; /* gap-3 */
-    font-size: 0.75rem; /* text-xs */
-    color: #365314; /* text-lime-900 */
-    background-color: #f7fee7; /* bg-lime-100 */
-    padding-left: 0.5rem; /* px-2 */
-    padding-right: 0.5rem; /* px-2 */
-    padding-top: 0.5rem; /* py-2 */
-    padding-bottom: 0.5rem; /* py-2 */
-    border-radius: 0.375rem; /* rounded */
-    border: 1px solid #d9f99d; /* border-lime-200 */
-    cursor: pointer;
-    transition: border-color 0.2s;
-  }
-  @media (min-width: 768px) {
-    .download-btn {
-      font-size: 13px; /* md:text-[13px] */
-      padding-left: 0.75rem; /* md:px-3 */
-      padding-right: 0.75rem; /* md:px-3 */
-    }
-  }
-  .download-btn:hover {
-    border-color: #a3e635; /* hover:border-lime-400 */
+    @apply items-center gap-3 text-xs md:text-[13px] text-lime-900 bg-lime-100 px-2 md:px-3 py-2 rounded border border-lime-200 hover:border-lime-400 cursor-pointer;
   }
 
   .user-card {
-    background-color: #fff;
-    padding: 1rem; /* p-4 */
-    border-radius: 0.75rem; /* rounded-xl */
-    border: 1px solid rgba(229, 231, 235, 0.5); /* border-gray-200/50 */
-    box-shadow: 0 4px 6px -1px rgba(243, 244, 246, 0.1), 0 2px 4px -2px rgba(243, 244, 246, 0.1); /* shadow-md shadow-gray-100 */
+    @apply bg-white p-4 rounded-xl border border-gray-200/50 shadow-md shadow-gray-100;
   }
 
   .input-box {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 0.75rem; /* gap-3 */
-    font-size: 0.875rem; /* text-sm */
-    color: #000; /* text-black */
-    background-color: rgba(100, 116, 139, 0.5); /* bg-slate-100/50 */
-    border-radius: 0.375rem; /* rounded */
-    padding-left: 1.5rem; /* px-6 */
-    padding-right: 1.5rem; /* px-6 */
-    padding-top: 0.75rem; /* py-3 */
-    padding-bottom: 0.75rem; /* py-3 */
-    margin-bottom: 1rem; /* mb-4 */
-    margin-top: 0.75rem; /* mt-3 */
-    border: 1px solid #e2e8f0; /* border-slate-200 */
-    outline: none;
+    @apply w-full flex justify-between gap-3 text-sm text-black bg-slate-100/50 rounded px-6 py-3 mb-4 mt-3 border border-slate-200 outline-none;
   }
 
   .btn-primary {
-    width: 100%;
-    font-size: 0.875rem; /* text-sm */
-    font-weight: 500; /* font-medium */
-    color: #fff; /* text-white */
-    background-color: #3b82f6; /* bg-primary (fallback to Tailwind's blue-500) */
-    box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.05), 0 4px 6px -4px rgba(139, 92, 246, 0.05); /* shadow-lg shadow-purple-600/5 */
-    padding: 10px;
-    border-radius: 0.375rem; /* rounded-md */
-    margin-top: 0.25rem; /* my-1 */
-    margin-bottom: 0.25rem; /* my-1 */
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-  }
-  .btn-primary:hover {
-    background-color: rgba(37, 99, 235, 0.15); /* hover:bg-blue-600/15 */
-    color: #2563eb; /* hover:text-blue-600 */
+    @apply w-full text-sm font-medium text-white bg-primary shadow-lg shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-blue-600/15 hover:text-blue-600 cursor-pointer;
   }
 
   .card {
-    background-color: #fff;
-    padding: 1.5rem; /* p-6 */
-    border-radius: 1rem; /* rounded-2xl */
-    box-shadow: 0 4px 6px -1px rgba(243, 244, 246, 0.1), 0 2px 4px -2px rgba(243, 244, 246, 0.1); /* shadow-md shadow-gray-100 */
-    border: 1px solid rgba(229, 231, 235, 0.5); /* border-gray-200/50 */
+    @apply bg-white p-6 rounded-2xl shadow-md shadow-gray-100 border border-gray-200/50;
   }
 
   .card-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem; /* gap-3 */
-    font-size: 12px; /* text-[12px] */
-    font-weight: 500; /* font-medium */
-    color: #374151; /* text-gray-700 */
-    background-color: #f9fafb; /* bg-gray-50 */
-    padding-left: 1rem; /* px-4 */
-    padding-right: 1rem; /* px-4 */
-    padding-top: 0.375rem; /* py-1.5 */
-    padding-bottom: 0.375rem; /* py-1.5 */
-    border-radius: 0.5rem; /* rounded-lg */
-    border: 1px solid rgba(229, 231, 235, 0.5); /* border-gray-200/50 */
-    transition: background 0.2s, color 0.2s;
-    cursor: pointer;
-  }
-  .card-btn:hover {
-    color: #3b82f6; /* hover:text-primary */
-    background-color: #eff6ff; /* hover:bg-blue-50 */
+    @apply flex items-center justify-center gap-3 text-[12px] font-medium text-gray-700 hover:text-primary bg-gray-50 hover:bg-blue-50 px-4 py-1.5 rounded-lg border border-gray-200/50;
   }
 }
