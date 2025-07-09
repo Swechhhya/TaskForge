@@ -71,26 +71,18 @@ const SignUp = () => {
   };
   return (
     <AuthLayout>
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-full max-w-6xl bg-white shadow-md rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
-          {/* Left: Form Content */}
-          <div className="p-8 md:p-10">
-            <h2 className="text-2xl font-bold text-gray-800">
-              Create an Account
-            </h2>
-            <p className="text-sm text-gray-600 mt-2 mb-6">
-              Join us today by entering your details below.
-            </p>
+      <div className="lg:w-[85%] h-3/4 md:h-full flex flex-col justify">
+    <h3 className="text-xl font-semibold text-black">Create an Account</h3>
+    <p className="text-xs text-slate-700 mt-[7px] mb-5 capitalize">
+      Join us today by entering your details below.
+    </p>
 
-            <div className="flex justify-center mb-6">
-              <ProfilePhotoSelector
-                image={profilePic}
-                setImage={setProfilePic}
-              />
-            </div>
+    <div className="flex justify-center mb-6">
+      <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
+    </div>
 
-            <form onSubmit={handleSignUp} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <form onSubmit={handleSignUp}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
                   value={fullName}
                   onChange={({ target }) => setFullName(target.value)}
@@ -125,7 +117,7 @@ const SignUp = () => {
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md font-medium transition duration-200"
+                className="btn-primary"
               >
                 SIGN UP
               </button>
@@ -141,8 +133,6 @@ const SignUp = () => {
               </p>
             </form>
           </div>
-        </div>
-      </div>
     </AuthLayout>
   );
 };
