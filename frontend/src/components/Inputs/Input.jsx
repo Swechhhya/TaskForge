@@ -15,7 +15,7 @@ const Input = ({ value, onChange, label, placeholder, type }) => {
         {label}
       </label>
       <div className="input-box">
-        <input
+        <input 
           id={inputId}
           type={type === "password" ? (showPassword ? "text" : "password") : type}
           placeholder={placeholder}
