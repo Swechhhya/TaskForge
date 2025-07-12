@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import axiosInstance from '/src/utils/axiosInstance.js';
+import axiosInstance from "/src/utils/axiosInstance.js";
 import { API_PATHS } from "../../utils/apiPaths";
 import { UserContext } from "../../context/userContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -40,7 +40,7 @@ const SignUp = () => {
         profileImageUrl = imageUploadRes.imageUrl || "";
       }
 
-      const response = await axiosInstance.post(API_PATHS. AUTH.REGISTER, {
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
         name: fullName,
         email,
         password,
@@ -71,68 +71,62 @@ const SignUp = () => {
   };
   return (
     <AuthLayout>
-      <div className="lg:w-[85%] h-3/4 md:h-full flex flex-col justify">
-    <h3 className="text-xl font-semibold text-black">Create an Account</h3>
-    <p className="text-xs text-slate-700 mt-[7px] mb-5 capitalize">
-      Join us today by entering your details below.
-    </p>
+      <div className="lg:w-[100%] h-3/4 md:h-full flex flex-col">
+        <h3 className="text-xl font-semibold text-black">Create an Account</h3>
+        <p className="text-xs text-slate-700 mt-[7px] mb-5 capitalize">
+          Join us today by entering your details below.
+        </p>
 
-    <div className="flex justify-center mb-6">
-      <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
-    </div>
+        <div className="flex justify-center mb-6 ">
+          <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
+        </div>
 
-    <form onSubmit={handleSignUp}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input
-                  value={fullName}
-                  onChange={({ target }) => setFullName(target.value)}
-                  label="Full Name"
-                  placeholder="Jack"
-                  type="text"
-                />
-                <Input
-                  value={email}
-                  onChange={({ target }) => setEmail(target.value)}
-                  label="Email Address"
-                  placeholder="jack@example.com"
-                  type="email"
-                />
-                <Input
-                  value={password}
-                  onChange={({ target }) => setPassword(target.value)}
-                  label="Password"
-                  placeholder="Min 8 characters"
-                  type="password"
-                />
-                <Input
-                  value={adminInviteToken}
-                  onChange={({ target }) => setAdminInviteToken(target.value)}
-                  label="Admin Invite Token"
-                  placeholder="6 Digit Code"
-                  type="text"
-                />
-              </div>
-
-              {error && <p className="text-sm text-red-500 -mt-2">{error}</p>}
-
-              <button
-                type="submit"
-                className="btn-primary"
-              >
-                SIGN UP
-              </button>
-
-              <p className="text-sm text-gray-600 text-center mt-3">
-                Already have an account?{" "}
-                <Link
-                  className="text-blue-600 font-medium underline"
-                  to="/login"
-                >
-                  Login
-                </Link>
-              </p>
-            </form>
+        <form onSubmit={handleSignUp}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input
+              value={fullName}
+              onChange={({ target }) => setFullName(target.value)}
+              label="Full Name"
+              placeholder="Jack"
+              type="text"
+            />
+            <Input
+              value={email}
+              onChange={({ target }) => setEmail(target.value)}
+              label="Email Address"
+              placeholder="jack@example.com"
+              type="email"
+            />
+            <Input
+              value={password}
+              onChange={({ target }) => setPassword(target.value)}
+              label="Password"
+              placeholder="Min 8 characters"
+              type="password"
+            />
+            <Input
+              value={adminInviteToken}
+              onChange={({ target }) => setAdminInviteToken(target.value)}
+              label="Admin Invite Token"
+              placeholder="6 Digit Code"
+              type="text"
+            />
           </div>
+
+          {error && <p className="text-sm text-red-500 -mt-2">{error}</p>}
+
+          <button type="submit" className="btn-primary">
+            SIGN UP
+          </button>
+
+          <p className="text-sm text-gray-600 text-center mt-3">
+            Already have an account?{" "}
+            <Link className="text-blue-600 font-medium underline" to="/login">
+              Login
+            </Link>
+          </p>
+        </form>
+      </div>
     </AuthLayout>
   );
 };

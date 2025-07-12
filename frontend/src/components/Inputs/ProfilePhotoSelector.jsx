@@ -46,9 +46,9 @@ return (
             <button
                 type='button'
                 onClick={onChooseFile}
-                className='w-8 h-8 flex items-center justify-between bg-primary text-white rounded-full absolute -bottom-1 -right-1 button-upload'
+                className='w-8 h-8 flex items-center justify-between bg-primary text-white rounded-full absolute -bottom-1 -right-1 button-upload hover:cursor-pointer'
                 >
-                    <LuUpload />
+                    <LuUpload className='ml-1.5'/>
                  </button>
                 </div>
         ) : (
