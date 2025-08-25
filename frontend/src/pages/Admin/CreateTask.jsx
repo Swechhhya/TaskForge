@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { PRIORITY_DATA } from "../../utils/data";
 import axiosInstance from '/src/utils/axiosInstance.js';
@@ -64,7 +64,7 @@ const CreateTask = () => {
         completed: false,
       }));
 
-      const response = await axiosInstance.post(API_PATHS.TASKS.CREATE_TASK, {
+      await axiosInstance.post(API_PATHS.TASKS.CREATE_TASK, {
         ...taskData,
         dueDate: new Date(taskData.dueDate).toISOString(),
         todoChecklist: todolist,
@@ -141,7 +141,7 @@ const CreateTask = () => {
   };
 
   // get Task info by ID
-  const getTaskDetailsByID = async () => {
+  const getTaskDetailsByID = useCallback(async () => {
     try {
       const response = await axiosInstance.get(
         API_PATHS.TASKS.GET_TASK_BY_ID(taskId)
@@ -167,7 +167,7 @@ const CreateTask = () => {
     } catch (error) {
       console.error("Error fetching users", error);
     }
-  };
+  }, [taskId]);
 
   // Delete Task
   const deleteTask = async () => {
@@ -187,11 +187,11 @@ const CreateTask = () => {
 
   useEffect(() => {
     if (taskId) {
-      getTaskDetailsByID(taskId);
+      getTaskDetailsByID();
     }
 
     return () => {};
-  }, [taskId]);
+  }, [taskId, getTaskDetailsByID]);
 
   return (
     <DashboardLayout activeMenu="Create Task">

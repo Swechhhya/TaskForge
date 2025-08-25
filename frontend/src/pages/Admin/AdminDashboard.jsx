@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useUserAuth } from '../../hooks/useUserAuth';
 import { UserContext } from '../../context/userContext';
 import DashboardLayout from '../../components/layouts/DashboardLayout';
@@ -26,6 +26,7 @@ const AdminDashboard = () => {
 
   // Prepare Chart Data
   const prepareChartData = (data) => {
+    console.log(data);
     const taskDistribution = data?.taskDistribution || {};
     const taskPriorityLevels = data?.taskPriorityLevel || {};
 
@@ -47,19 +48,19 @@ const AdminDashboard = () => {
   };
 
   // Fetch dashboard data and prepare chart data
-  const getDashboardData = async () => {
+  const getDashboardData = useCallback(async () => {
     try {
       const response = await axiosInstance.get(API_PATHS.TASKS.GET_DASHBOARD_DATA);
       setDashboardData(response.data);
       prepareChartData(response.data.charts);
-    } catch (error) {
-      // handle error as needed
+    } catch (_error) {
+      console.error(_error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     getDashboardData();
-  }, []);
+  }, [getDashboardData]);
 
   return (
     <DashboardLayout activeMenu="DashBoard">

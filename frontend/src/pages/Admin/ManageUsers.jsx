@@ -4,6 +4,7 @@ import axiosInstance from '/src/utils/axiosInstance.js';
 import { API_PATHS } from "../../utils/apiPaths";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import UserCard from "../../components/cards/UserCard";
+import toast from "react-hot-toast";
 
 const ManageUsers = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -66,6 +67,7 @@ const ManageUsers = () => {
             <UserCard key={user._id} userInfo={user} />
           ))}
         </div>
+        {console.log("allUsers",allUsers)}
       </div>
     </DashboardLayout>
   );

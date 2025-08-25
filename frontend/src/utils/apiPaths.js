@@ -7,7 +7,7 @@ export const API_PATHS = {
     GET_PROFILE: "/api/auth/profile",
   },
   USERS: {
-    GET_ALL_USERS: "/api/users",
+    GET_ALL_USERS: "/api/users/",
     GET_USER_BY_ID: (userId) => `/api/users/${userId}`, // <-- function now
     CREATE_USER: "/api/users",
     GET_USER_DETAILS: (userId) => `/api/users/${userId}`, 
