@@ -43,7 +43,7 @@ const TaskListTable = ({ tableData }) => {
           {tableData.map((task) => (
             <tr key={task._id} className='border-t border-gray-200'>
               <td className='py-4 px-4 text-gray-700 text-[13px]'>
-                {task.name || 'Untitled'}
+                {task.title || 'Untitled'}
               </td>
               <td className='py-4 px-4'>
                 <span className={`px-2 py-1 text-xs rounded inline-block ${getStatusBadgeColor(task.status)}`}>

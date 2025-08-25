@@ -347,7 +347,7 @@ const getUserDashboardData = async (req, res) =>{
         // Task distribution by status
         const taskStatuses = ["Pending", "In Progress", "Completed"];
         const taskDistributionRaw = await Task.aggregate([
-            {switch: { assignedTo:userId }},
+            { $match: { assignedTo: userId }},
             { $group: { _id: "$status", count: { $sum: 1 }  }  },
         ]);
 

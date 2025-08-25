@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useUserAuth } from '../../hooks/useUserAuth';
 import { useContext } from 'react';
 import { UserContext } from '../../context/userContext';
@@ -50,7 +50,7 @@ const UserDashboard = () => {
      setBarChartData(PriorityLevelData);
   };
 
-  const getDashboardData = async () => {
+  const getDashboardData = useCallback(async () => {
     try {
       const response = await axiosInstance.get(
         API_PATHS.TASKS.GET_USER_DASHBOARD_DATA
@@ -62,16 +62,16 @@ const UserDashboard = () => {
     } catch (error) {
       console.error('Error fetching users:', error);
     }
-  };
+  }, []);
 
   const onSeeMore = ()=>{
-    navigate('/admin/tasks')
+    navigate('/my-tasks')
   }
 
   useEffect(() => {
     getDashboardData();
     return () => {};
-  }, []);
+  }, [getDashboardData]);
 
   return (
     <DashboardLayout activeMenu='DashBoard'>
@@ -125,7 +125,7 @@ const UserDashboard = () => {
        <div>
         <div className='card'>
           <div className='flex items-center justify-between'>
-            <h5 classNaame='font-medium'>Task Distribution</h5>
+            <h5 className='font-medium'>Task Distribution</h5>
           </div>
         
          <CustomPieChart
@@ -138,7 +138,7 @@ const UserDashboard = () => {
      <div>
         <div className='card'>
           <div className='flex items-center justify-between'>
-            <h5 classNaame='font-medium'>Task Priority Levels</h5>
+            <h5 className='font-medium'>Task Priority Levels</h5>
           </div>
         
          <CustomBarChart
@@ -150,7 +150,7 @@ const UserDashboard = () => {
       <div className='md:col-span-2'>
         <div className='card'>
           <div className='flex items-center justify-between'>
-            <h5 className='text-lg'>Recenet Tasks</h5>
+            <h5 className='text-lg'>Recent Tasks</h5>
 
             <button className='card-btn' onClick={onSeeMore}>
               See All <LuArrowRight className='text-base' />
