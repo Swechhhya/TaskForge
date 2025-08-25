@@ -7,7 +7,7 @@ const excelJS = require("exceljs");
 // @access Private(Admin)
 const exportTasksReport = async (req, res) => {
     try{
-       const tasks =  await Task.find().populate(" assignedTo", "name email"); 
+       const tasks =  await Task.find().populate("assignedTo", "name email"); 
 
        const workbook = new excelJS.Workbook();
        const worksheet = workbook.addWorksheet("Tasks Report");
@@ -18,7 +18,7 @@ const exportTasksReport = async (req, res) => {
         { header: "Description", key: "description", width: 50},
         { header: "Priority", key: "priority", width: 15},
         { header: "Status", key: "status", width: 20},
-        { header: "Due Date", key: "duedate", width: 20},
+        { header: "Due Date", key: "dueDate", width: 20},
         { header: "Assigned To", key: "assignedTo", width: 30},
        ];
 
@@ -32,7 +32,7 @@ const exportTasksReport = async (req, res) => {
             description: task.description,
             priority: task.priority,
             status: task.status,
-            dueDate: task.dueDate.toISOString().split("T")[0],
+            dueDate: task.dueDate ? task.dueDate.toISOString().split("T")[0] : "N/A",
             assignedTo: assignedTo || "Unassigned",
         });
        });
@@ -75,7 +75,7 @@ const exportUsersReport = async (req, res) =>{
                 taskCount: 0,
                 pendingTasks: 0,
                 inProgressTasks: 0,
-                completed: 0,
+                completedTasks: 0,
             };
         });
 
@@ -102,7 +102,7 @@ const exportUsersReport = async (req, res) =>{
  worksheet.columns = [
         { header: "User Name", key: "name", width: 30},
         { header: "Email", key: "email", width: 40},
-        { header: "Total Assigned Tasks", key: "taskcount", width: 20},
+        { header: "Total Assigned Tasks", key: "taskCount", width: 20},
         { header: "Pending Tasks", key: "pendingTasks", width: 20},
         { 
             header: "In Progress tasks", 
@@ -122,7 +122,7 @@ const exportUsersReport = async (req, res) =>{
        );
        res.setHeader(
         "Content-Disposition",
-        'attachment; filename= "tasks_report.xlsx"'
+        'attachment; filename= "users_report.xlsx"'
        );
 
        return workbook.xlsx.write(res).then(() => {
@@ -131,7 +131,7 @@ const exportUsersReport = async (req, res) =>{
     } catch (error) {
         res
         .status(500)
-        .json({ message : "Error exporting tasks", error: error.message});
+        .json({ message : "Error exporting users", error: error.message});
     } 
 };
 

@@ -26,6 +26,7 @@ export const API_PATHS = {
   },
   REPORTS: {
     EXPORT_TASKS: "/api/reports/export/tasks",
+    EXPORT_USERS: "/api/reports/export/users",
   },
   IMAGE: {
     UPLOAD_IMAGE: "/api/auth/upload-image", // Added leading slash for consistency
