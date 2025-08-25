@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
-import Dashboard from './pages/Admin/Dashboard';
 import Login from './pages/Auth/Login';
 import ManageTasks from './pages/Admin/ManageTasks';
 import CreateTask from './pages/Admin/CreateTask';
 import ManageUsers from './pages/Admin/ManageUsers';
 
-import UserDashboard from './pages/Admin/UserDashboard';
+import UserDashboard from './pages/User/UserDashboard';
 import MyTasks from './pages/User/MyTasks';
 import ViewTaskDetails from './pages/User/ViewTaskDetails';
 
@@ -14,6 +13,7 @@ import PrivateRoute from './routes/PrivateRoute';
 import UserProvider, { UserContext } from './context/userContext';
 import { Toaster } from 'react-hot-toast';
 import SignUp from './pages/Auth/SignUp';
+import AdminDashboard from './pages/Admin/AdminDashboard';
 
 const App = () => {
   return (
