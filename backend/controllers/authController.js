@@ -163,11 +163,11 @@ const registerUser = async (req, res) => {
             return res.status(400).json({ message: "User already exists" });
         }
 
-        // Determine user role: Admin if correct token is provided, otherwise Member 
-        let role = "member";
+        // Determine user role: Admin if correct token is provided, otherwise User
+        let role = "user";
         if(
             adminInviteToken &&
-            adminInviteToken == process.env.ADMIN_INVITE_TOKEN
+            adminInviteToken === process.env.ADMIN_INVITE_TOKEN
         ) {
             role = "admin";
         }
