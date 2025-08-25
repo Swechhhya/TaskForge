@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
+const PlaceHolder = require('../')
 
 const UserSchema = new mongoose.Schema(
    {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    profileImageUrl: { type: String, default: null },
+    profileImageUrl: { type: String, default: PlaceHolder },
     role: { type: String, enum: ['admin', 'user'], default: 'user' }, // Role-based access
    }, 
    { timestamps: true }

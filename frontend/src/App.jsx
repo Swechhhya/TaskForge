@@ -6,7 +6,7 @@ import ManageTasks from './pages/Admin/ManageTasks';
 import CreateTask from './pages/Admin/CreateTask';
 import ManageUsers from './pages/Admin/ManageUsers';
 
-import UserDashboard from './pages/User/UserDashboard';
+import UserDashboard from './pages/Admin/UserDashboard';
 import MyTasks from './pages/User/MyTasks';
 import ViewTaskDetails from './pages/User/ViewTaskDetails';
 
@@ -26,10 +26,10 @@ const App = () => {
           
           {/* Admin Routes */}
           <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
-          <Route path="/admin/dashboard" element={<Dashboard/>}/>
-          <Route path="/admin/manage-tasks" element={<ManageTasks />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
+          <Route path="/admin/tasks" element={<ManageTasks />} />
           <Route path="/admin/create-task" element={<CreateTask />} />
-          <Route path="/admin/manage-users" element={<ManageUsers />} />
+          <Route path="/admin/users" element={<ManageUsers />} />
           </Route>
 
           {/* User Routes */}

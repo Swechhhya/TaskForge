@@ -331,10 +331,10 @@ const getDashboardData = async (req, res) =>{
 // @access Private
 const getUserDashboardData = async (req, res) =>{
      try{
-        const userID = req.user._id; // Only fetch data for the logged-in user
+        const userId = req.user._id; // Only fetch data for the logged-in user
 
         // Fetch statistics for user-specific tasks
-        const totalTasks = await Task.countDocuments({ assignedTo: userID });
+        const totalTasks = await Task.countDocuments({ assignedTo: userId });
         const pendingTasks = await Task.countDocuments({ assignedTo: userId, status: "Pending" });
         const completedTasks = await Task.countDocuments({ assignedTo: userId, status: "Completed" });
         const overdueTasks = await Task.countDocuments({ 
@@ -366,9 +366,9 @@ const getUserDashboardData = async (req, res) =>{
             { $group: { _id: "$priority", count: { $sum: 1}  }  },
         ]);
 
-        const taskPrioritiesLevels = taskPriorities.reduce((acc, priority) => {
+        const taskPriorityLevels = taskPriorities.reduce((acc, priority) => {
             acc[priority] =
-             taskPrioritiesLevelsRaw.find((item) => item._id === priority)?.count || 0;
+             taskPriorityLevelsRaw.find((item) => item._id === priority)?.count || 0;
              return acc;
         }, {});
 
@@ -387,7 +387,7 @@ const getUserDashboardData = async (req, res) =>{
             },
             charts: {
                 taskDistribution,
-                taskPriorityLevels,    
+                taskPriorityLevels,
             },
             recentTasks,
         });

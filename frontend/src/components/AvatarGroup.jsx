@@ -1,8 +1,10 @@
 import React from "react";
+import PlaceHolder from "../assets/placeholder.svg";
 
 const AvatarGroup = ({ avatars, maxVisible = 3 }) => {
   return (
     <div className="flex items-center">
+      {console.log("avatars", avatars)}
       {avatars.slice(0, maxVisible).map((avatar, index) => (
         <img
           key={index}
