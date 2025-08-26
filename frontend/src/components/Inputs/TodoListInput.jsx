@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { HiMiniPlus, HiOutlineTrash } from "react-icons/hi2";
 
+
 const TodoListInput = ({ todoList, setTodoList }) => {
   const [option, setOption] = useState("");
+  console.log(todoList);
+
+
 
   const handleAddOption = () => {
     if (option.trim()) {

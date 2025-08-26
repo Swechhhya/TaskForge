@@ -59,7 +59,7 @@ const CreateTask = () => {
     setLoading(true);
 
     try {
-      const todolist = taskData.todoChecklist?.map((item) => ({
+      const todoList = taskData.todoChecklist?.map((item) => ({
         text: item,
         completed: false,
       }));
@@ -67,7 +67,7 @@ const CreateTask = () => {
       await axiosInstance.post(API_PATHS.TASKS.CREATE_TASK, {
         ...taskData,
         dueDate: new Date(taskData.dueDate).toISOString(),
-        todoChecklist: todolist,
+        todoChecklist: todoList,
       });
 
       toast.success("Task Created Successfully");
@@ -85,7 +85,7 @@ const CreateTask = () => {
   const updateTask = async () => {
     setLoading(true);
     try {
-      const todolist = taskData.todoChecklist?.map((item) => {
+      const todoList = taskData.todoChecklist?.map((item) => {
         const prevTodoChecklist = currentTask?.todoChecklist || [];
         const matchedTask = prevTodoChecklist.find((task) => task.text == item);
 
@@ -99,7 +99,7 @@ const CreateTask = () => {
         {
           ...taskData,
           dueDate: new Date(taskData.dueDate).toISOString(),
-          todoChecklist: todolist,
+          todoChecklist: todoList,
         }
       );
 
@@ -260,7 +260,8 @@ const CreateTask = () => {
                 <input
                   placeholder="Create App UI"
                   className="form-input"
-                  value={taskData.dueDate}
+                  value={taskData.dueDate || ""} // fallback to empty string
+
                   onChange={({ target }) =>
                     handleValueChange("dueDate", target.value)
                   }
@@ -286,9 +287,9 @@ const CreateTask = () => {
                 TODO Checklist
               </label>
               <TodoListInput
-                todoList={taskData?.todoChecklist}
-                setTodolist={(value) =>
-                  handleValueChange("todoChecklist", value)
+                todoList={taskData?.todoCheckList || []}
+                setTodoList={(value) =>
+                  handleValueChange("todoCheckList", value)
                 }
               />
             </div>
