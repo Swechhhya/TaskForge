@@ -42,7 +42,7 @@ const getTasks = async (req, res) =>{
             req.user.role === "admin" ? {} : { assignedTo: req.user._id}
         );
 
-        const prndingTasks = await Task.countDocuments({
+        const pendingTasks = await Task.countDocuments({
             ...filter,
             status: "Pending",
             ...(req.user.role !== "admin" && { assignedTo: req.user._id}),
@@ -64,6 +64,7 @@ const getTasks = async (req, res) =>{
             tasks,
             statusSummary: {
             all: allTasks,
+            pendingTasks,
             inProgressTasks,
             completedTasks,
         },

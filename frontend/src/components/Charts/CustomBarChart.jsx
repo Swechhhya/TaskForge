@@ -10,7 +10,8 @@ import {
   Cell,
 } from 'recharts';
 
-const CustomBarChart = ({ data }) => {
+
+const CustomBarChart = ({ data = [], colors = [] }) => {
   const getBarColor = (entry) => {
     switch (entry?.priority) {
       case 'Low':
@@ -44,13 +45,13 @@ const CustomBarChart = ({ data }) => {
   };
 
   return (
-    <div className='bg-white mt-6'>
+    <div className='h-[300px] bg-white mt-6 p-4'>
       <ResponsiveContainer width='100%' height={300}>
         <BarChart data={data}>
           <CartesianGrid stroke='none' />
           <XAxis dataKey='priority' tick={{ fontSize: 12, fill: '#555' }} stroke='none' />
           <YAxis tick={{ fontSize: 12, fill: '#555' }} stroke='none' />
-          <Tooltip content={CustomTooltip} cursor={{ fill: 'transparent' }} />
+          <Tooltip content={CustomTooltip} cursor={{ fill: 'transparent' } } />
           <Bar
             dataKey='count'
             nameKey='priority'

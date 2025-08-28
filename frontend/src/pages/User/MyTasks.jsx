@@ -6,7 +6,7 @@ import axiosInstance from '/src/utils/axiosInstance.js';
 import { API_PATHS } from "../../utils/apiPaths";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import TaskStatusTabs from "../../components/TaskStatusTabs";
-// import TaskCard from "../../components/Cards/TaskCard";
+import TaskCard from "../../components/cards/TaskCard";
 
 const MyTasks = () => {
   const [allTasks, setAllTasks] = useState([]);
@@ -29,10 +29,13 @@ const MyTasks = () => {
       const statusSummary = response.data?.statusSummary || {};
 
       const statusArray = [
-        { label: "To Do", value: statusSummary.toDo || 0 },
-        { label: "In Progress", value: statusSummary.inProgress || 0 },
-        { label: "Completed", value: statusSummary.completed || 0 },
+        { label: "All ", count: statusSummary.all || 0 },
+        { label: "Pending", count: statusSummary.pendingTasks || 0 },
+        { label: "In Progress", count: statusSummary.inProgressTasks || 0 },
+        { label: "Completed", count: statusSummary.completedTasks || 0 },
       ];
+
+      console.log("Status Summary:", response.data?.statusSummary);
 
       setTabs(statusArray);
     } catch (error) {
@@ -79,7 +82,7 @@ const MyTasks = () => {
       assignedTo={item.assignedTo?.map((item) => item.profileImageUrl)}
       attachmentCount={item.attachments?.length || 0}
       completedTodoCount={item.completedTodoCount || 0}
-      todoChecklist={item.todoChecklist || []}
+      todoCheck={item.todoChecklist || []}
       onClick={() => {
         handleClick(item._id);
       }}
