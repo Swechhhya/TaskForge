@@ -14,10 +14,12 @@ import SelectDropdown from "../../components/Inputs/SelectDropdown";
 import SelectUsers from "../../components/Inputs/SelectUsers";
 import TodoListInput from "../../components/Inputs/TodoListInput";
 import AddAttachmentsInput from "../../components/Inputs/AddAttachmentsInput";
+import { useParams } from "react-router-dom";
+
 
 const CreateTask = () => {
   const location = useLocation();
-  const { taskId } = location.state || {};
+ const { taskId } = useParams(); 
   const navigate = useNavigate();
 
   const [taskData, setTaskData] = useState({
@@ -187,7 +189,7 @@ const CreateTask = () => {
 
   useEffect(() => {
     if (taskId) {
-      getTaskDetailsByID();
+      getTaskDetailsByID(taskId);
     }
 
     return () => {};
@@ -293,6 +295,7 @@ const CreateTask = () => {
                 }
               />
             </div>
+            
             <div className="mt-3">
               <label className="text-xs font-medium text-slate-600">
                 Add Attachments

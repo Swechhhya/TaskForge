@@ -30,24 +30,25 @@ const UserDashboard = () => {
 
   //Prepare Chart Data
   const prepareChartData = (data) => {
-    const taskDistribution = data?.taskDistribution || null;
-    const taskPriorityLevels = data?.taskPriorityLevels || null;
-   
-    const taskDistributionData = [
+    const taskDistribution = data?.taskDistribution || {};
+    const taskPriorityLevels = data?.taskPriorityLevels || {};
+     const pieData = [
       { status: 'Pending', count: taskDistribution?.Pending || 0},
       { status: 'In Progress', count: taskDistribution?.InProgress || 0},
       { status: 'Completed', count: taskDistribution?.Completed || 0},
     ];
 
-    setPieChartData(taskDistributionData);
+    setPieChartData(pieData);
 
-    const PriorityLevelData = [
+    const barData = [
       { priority: 'Low', count: taskPriorityLevels?.Low || 0},
       { priority: 'Medium', count: taskPriorityLevels?.Medium || 0},
       { priority: 'High', count: taskPriorityLevels?.High || 0},
     ];
 
-     setBarChartData(PriorityLevelData);
+     setBarChartData(barData);
+     console.log('Pie Chart Data:', pieData);
+     console.log('Bar Chart Data:', barData);
   };
 
   const getDashboardData = useCallback(async () => {

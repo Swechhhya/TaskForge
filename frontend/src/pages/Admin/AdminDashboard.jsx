@@ -17,8 +17,9 @@ const COLORS = ['#8D51FF', '#00B8DB', '#7BCE00'];
 
 const AdminDashboard = () => {
   useUserAuth();
-  const navigate = useNavigate();
+  
   const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const [dashboardData, setDashboardData] = useState(null);
   const [pieChartData, setPieChartData] = useState([]);
@@ -27,20 +28,23 @@ const AdminDashboard = () => {
   // Prepare Chart Data
   const prepareChartData = (data) => {
     console.log(data);
-    const taskDistribution = data?.taskDistribution || {};
-    const taskPriorityLevels = data?.taskPriorityLevel || {};
+    const taskDistribution = data?.taskDistribution || null;
+    const taskPriorityLevels = data?.taskPriorityLevels || null;
 
-    setPieChartData([
+     const taskDistributionData = [
       { status: 'Pending', count: taskDistribution.Pending || 0 },
       { status: 'In Progress', count: taskDistribution.InProgress || 0 },
       { status: 'Completed', count: taskDistribution.Completed || 0 },
-    ]);
+    ];
 
-    setBarChartData([
+     setPieChartData(taskDistributionData);
+    
+     const PriorityLevelData = [
       { priority: 'Low', count: taskPriorityLevels.Low || 0 },
       { priority: 'Medium', count: taskPriorityLevels.Medium || 0 },
       { priority: 'High', count: taskPriorityLevels.High || 0 },
-    ]);
+    ];
+      setBarChartData(PriorityLevelData);
   };
 
   const handleSeeMore = () => {
@@ -51,10 +55,12 @@ const AdminDashboard = () => {
   const getDashboardData = useCallback(async () => {
     try {
       const response = await axiosInstance.get(API_PATHS.TASKS.GET_DASHBOARD_DATA);
+      if (response.data) {
       setDashboardData(response.data);
-      prepareChartData(response.data.charts);
-    } catch (_error) {
-      console.error(_error);
+      prepareChartData(response.data?.charts || null)
+    }
+   } catch (error) {
+      console.error('Error fetching users:', error);
     }
   }, []);
 
@@ -68,7 +74,7 @@ const AdminDashboard = () => {
         <div className="col-span-3">
           <h2 className="text-xl md:text-2xl">Hello {user?.name}</h2>
           <p className="text-xs md:text-[13px] text-gray-400 mt-1.5">
-            {moment().format('dddd Do MMM YYYY')}
+            {moment().format('dddd Do MMM Y')}
           </p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-5">
@@ -108,18 +114,23 @@ const AdminDashboard = () => {
           <div className="flex items-center justify-between">
             <h5 className="font-medium">Task Distribution</h5>
           </div>
-          <CustomPieChart data={pieChartData} colors={COLORS} />
+          <CustomPieChart data={pieChartData} colors={COLORS} nameKey="status" valueKey="value"
+          />
         </div>
 
         <div className="card">
           <div className="flex items-center justify-between">
             <h5 className="font-medium">Task Priority Levels</h5>
           </div>
-          <CustomBarChart data={barChartData} />
+          <CustomBarChart data={barChartData} 
+          xKey="priority" 
+           yKey="count"
+           />
         </div>
       </div>
 
-      <div className="card md:col-span-2">
+      <div className="md:col-span-2">
+        <div className='card'></div>
         <div className="flex items-center justify-between">
           <h5 className="text-lg">Recent Tasks</h5>
           <button className="card-btn" onClick={handleSeeMore}>

@@ -36,8 +36,8 @@ const ManageUsers = () => {
       link.parentNode.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
-      console.error("Error downloading expense details:", error);
-      toast.error("Failed to download expense details. Please try again.");
+      console.error("Error downloading:", error);
+      toast.error("Failed to download. Please try again.");
     }
   };
 

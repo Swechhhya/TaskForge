@@ -21,6 +21,7 @@ export const API_PATHS = {
     CREATE_TASK: "/api/tasks",
     GET_TASK_DETAILS: (taskId) => `/api/tasks/${taskId}`,
     DELETE_TASK: (taskId) => `/api/tasks/${taskId}`,
+    UPDATE_TASK: (taskId) => `/api/tasks/${taskId}`,
     UPDATE_TASK_STATUS: (taskId) => `/api/tasks/${taskId}/status`,
     UPDATE_TODO_CHECKLIST: (taskId) => `/api/tasks/${taskId}/todo`,
   },

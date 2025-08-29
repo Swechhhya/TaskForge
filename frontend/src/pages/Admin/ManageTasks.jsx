@@ -5,7 +5,7 @@ import axiosInstance from '/src/utils/axiosInstance.js';
 import { API_PATHS } from "../../utils/apiPaths";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import TaskStatusTabs from "../../components/TaskStatusTabs";
-import TaskCard from "../../components/cards/TaskCard";
+import TaskCard from "../../components/Cards/TaskCard";
 import toast from "react-hot-toast";
 
 
@@ -119,9 +119,7 @@ const ManageTasks = () => {
             attachmentCount={item.attachments?.length || 0}
             completedTodoCount={item.completedTodoCount || 0}
             todoChecklist={item.todoChecklist || []}
-            onClick={() => {
-              handleClick(item);
-            }}
+            onClick={() => navigate(`/tasks/${item._id}`)}
           />
         ))}
       </div>

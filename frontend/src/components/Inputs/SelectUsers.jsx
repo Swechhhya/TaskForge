@@ -100,7 +100,7 @@ const SelectUsers = ({ selectedUsers, setSelectedUsers }) => {
           <button className="card-btn" onClick={() => setIsModalOpen(false)}>
             CANCEL
           </button>
-          <button className="card-btn-fill" onClick={handleAssign}>
+          <button className="card-btn-fill bg-primary" onClick={handleAssign}>
             DONE
           </button>
         </div>

@@ -85,7 +85,11 @@ const getTaskById = async (req, res) =>{
         );
 
         if(!task) return res.status(404).json({ message: "Task not found"});
-
+        const formattedTask = {
+      ...task._doc,
+      todoChecklist: Array.isArray(task.todoChecklist) ? task.todoChecklist : [],
+      attachments: Array.isArray(task.attachments) ? task.attachments : [],
+    };
         res.json(task);
     }catch(error){
         res.status(500).json({ message: "Server error", error: error.message});
@@ -112,7 +116,7 @@ const createTask = async (req, res) =>{
             .status(400)
             .json({ message : "assignedTo must be an array of user IDs"});
         }
-
+        
         const task = await Task.create({
             title,
             description,
@@ -274,7 +278,7 @@ const getDashboardData = async (req, res) =>{
         const taskDistributionRaw = await Task.aggregate([
             {
                 $group:  {
-                    _id: "status",
+                    _id: "$status",
                     count: { $sum: 1},
                 },
             },
