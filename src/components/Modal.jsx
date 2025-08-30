@@ -25,13 +25,8 @@ const Modal = ({ children, isOpen, onClose, title }) => {
                 fill="none"
                 viewBox="0 0 14 14"
               >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 1 6 6m0 0 6 6M7 1l6 6M7 1 1 7"
-                />
+                <line x1="1" y1="1" x2="13" y2="13" strokeWidth="2" />
+                <line x1="13" y1="1" x2="1" y2="13" strokeWidth="2" />
               </svg>
             </button>
           </div>

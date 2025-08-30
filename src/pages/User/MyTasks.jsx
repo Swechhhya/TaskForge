@@ -6,7 +6,7 @@ import axiosInstance from '/src/utils/axiosInstance.js';
 import { API_PATHS } from "../../utils/apiPaths";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import TaskStatusTabs from "../../components/TaskStatusTabs";
-import TaskCard from "../../components/cards/TaskCard";
+import TaskCard from "../../components/Cards/TaskCard";
 
 const MyTasks = () => {
   const [allTasks, setAllTasks] = useState([]);
@@ -82,7 +82,7 @@ const MyTasks = () => {
       assignedTo={item.assignedTo?.map((item) => item.profileImageUrl)}
       attachmentCount={item.attachments?.length || 0}
       completedTodoCount={item.completedTodoCount || 0}
-      todoCheck={item.todoChecklist || []}
+      todoChecklist={item.todoChecklist || []}
       onClick={() => {
         handleClick(item._id);
       }}

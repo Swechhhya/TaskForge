@@ -4,15 +4,21 @@ import PlaceHolder from "../assets/placeholder.svg";
 const AvatarGroup = ({ avatars, maxVisible = 3 }) => {
   return (
     <div className="flex items-center">
-      {console.log("avatars", avatars)}
-      {avatars.slice(0, maxVisible).map((avatar, index) => (
-        <img
-          key={index}
-          src={avatar && avatar.trim() !== "" ? avatar : PlaceHolder}
-          alt={`Avatar ${index}`}
-          className="w-9 h-9 rounded-full border-2 border-white -ml-3 first:ml-0"
-        />
-      ))}
+      {avatars.slice(0, maxVisible).map((avatar, index) => {
+        const imageSrc =
+          avatar && typeof avatar === "string" && avatar.trim() !== ""
+            ? avatar
+            : PlaceHolder;
+
+        return (
+          <img
+            key={index}
+            src={imageSrc}
+            alt={`Avatar ${index}`}
+            className="w-9 h-9 rounded-full border-2 border-white -ml-3 first:ml-0"
+          />
+        );
+      })}
       {avatars.length > maxVisible && (
         <div className="w-9 h-9 flex items-center justify-center bg-blue-50 text-xs rounded-full border-2 border-white -ml-3">
           +{avatars.length - maxVisible}
