@@ -14,22 +14,21 @@ const Modal = ({ children, isOpen, onClose, title }) => {
             </h3>
 
             <button
-  type="button"
-  className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
-  onClick={onClose}
->
-  <svg
-    className="w-3 h-3"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 14"
-    stroke="currentColor"
-  >
-    <line x1="1" y1="1" x2="13" y2="13" strokeWidth="2" />
-    <line x1="13" y1="1" x2="1" y2="13" strokeWidth="2" />
-  </svg>
-</button>
+              type="button"
+              className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm  w-8 h-8 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              onClick={onClose}
+            >
+              <svg
+                className="w-3 h-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <line x1="1" y1="1" x2="13" y2="13" strokeWidth="2" />
+                <line x1="13" y1="1" x2="1" y2="13" strokeWidth="2" />
+              </svg>
+            </button>
           </div>
           {/* Modal body */}
           <div className="p-4 md:p-5 space-y-4">{children}</div>
