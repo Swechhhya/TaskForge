@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { LuUser, LuUpload, LuTrash } from 'react-icons/lu';
+import userIcon from '../../assets/user-icon.jpg'; // adjust the path if needed
+
 
 const ProfilePhotoSelector = ({ image, setImage }) => {
   const inputRef = useRef(null);
@@ -60,10 +62,10 @@ return (
                 />
                  <button
                         type='button'
-                        className='w-8 h-8 flex items-center justify-between bg-red-500 text-white rounded-full absolute -bottom-0 -right-0'
+                        className='w-8 h-8 flex items-center justify-between bg-red-500 text-white rounded-full absolute -bottom-1 -right-1 button-remove hover:cursor-pointer'
                         onClick={handleRemoveImage}
                    >
-                        <LuTrash />
+                        <LuTrash className='ml-1.5' />
                     </button>
                 </div>
              )}
