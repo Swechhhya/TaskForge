@@ -1,5 +1,5 @@
 import React from "react";
-import PlaceHolder from "../../assets/placeholder.svg"
+import PlaceHolder from "../../assets/user-icon.jpg"
 
 const StatCard = ({ label, count, status }) => {
   if (!label || !count == undefined || count == null || !status) return null;

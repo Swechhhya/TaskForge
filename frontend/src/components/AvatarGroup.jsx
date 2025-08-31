@@ -1,5 +1,5 @@
 import React from "react";
-import PlaceHolder from "../assets/placeholder.svg";
+import PlaceHolder from "../assets/user-icon.jpg";
 
 const AvatarGroup = ({ avatars, maxVisible = 3 }) => {
   return (

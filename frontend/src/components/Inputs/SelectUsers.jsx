@@ -5,7 +5,7 @@ import { LuUser } from "react-icons/lu";
 import Modal from "../Modal";
 import AvatarGroup from "../AvatarGroup";
 
-import PlaceHolder from "../../assets/placeholder.svg";
+import PlaceHolder from "../../assets/user-icon.jpg";
 
 const SelectUsers = ({ selectedUsers, setSelectedUsers }) => {
   const [allUsers, setAllUsers] = useState([]);
