@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
-import { useUserAuth } from '../../hooks/useUserAuth';
-import { UserContext } from '../../context/userContext';
-import DashboardLayout from '../../components/layouts/DashboardLayout';
-import { useNavigate } from 'react-router-dom';
-import axiosInstance from '/src/utils/axiosInstance.js';
-import { API_PATHS } from '../../utils/apiPaths';
-import moment from 'moment';
-import { LuArrowRight } from 'react-icons/lu';
-import InfoCard from '../../components/Cards/InfoCards';
-import { addThousandsSeparator } from '/src/utils/helper.js';
-import TaskListTable from '../../components/TaskListTable';
-import CustomPieChart from '../../components/Charts/CustomPieChart';
-import CustomBarChart from '../../components/Charts/CustomBarChart';
+import React, { useState, useEffect, useContext, useCallback } from "react";
+import { useUserAuth } from "../../hooks/useUserAuth";
+import { UserContext } from "../../context/userContext";
+import DashboardLayout from "../../components/layouts/DashboardLayout";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "/src/utils/axiosInstance.js";
+import { API_PATHS } from "../../utils/apiPaths";
+import moment from "moment";
+import { LuArrowRight } from "react-icons/lu";
+import InfoCard from "../../components/Cards/InfoCards";
+import { addThousandsSeparator } from "/src/utils/helper.js";
+import TaskListTable from "../../components/TaskListTable";
+import CustomPieChart from "../../components/Charts/CustomPieChart";
+import CustomBarChart from "../../components/Charts/CustomBarChart";
 
-const COLORS = ['#8D51FF', '#00B8DB', '#7BCE00'];
+const COLORS = ["#8D51FF", "#00B8DB", "#7BCE00"];
 
 const AdminDashboard = () => {
   useUserAuth();
-  
+
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -31,36 +31,38 @@ const AdminDashboard = () => {
     const taskDistribution = data?.taskDistribution || null;
     const taskPriorityLevels = data?.taskPriorityLevels || null;
 
-     const taskDistributionData = [
-      { status: 'Pending', count: taskDistribution.Pending || 0 },
-      { status: 'In Progress', count: taskDistribution.InProgress || 0 },
-      { status: 'Completed', count: taskDistribution.Completed || 0 },
+    const taskDistributionData = [
+      { status: "Pending", count: taskDistribution.Pending || 0 },
+      { status: "In Progress", count: taskDistribution.InProgress || 0 },
+      { status: "Completed", count: taskDistribution.Completed || 0 },
     ];
 
-     setPieChartData(taskDistributionData);
-    
-     const PriorityLevelData = [
-      { priority: 'Low', count: taskPriorityLevels.Low || 0 },
-      { priority: 'Medium', count: taskPriorityLevels.Medium || 0 },
-      { priority: 'High', count: taskPriorityLevels.High || 0 },
+    setPieChartData(taskDistributionData);
+
+    const PriorityLevelData = [
+      { priority: "Low", count: taskPriorityLevels.Low || 0 },
+      { priority: "Medium", count: taskPriorityLevels.Medium || 0 },
+      { priority: "High", count: taskPriorityLevels.High || 0 },
     ];
-      setBarChartData(PriorityLevelData);
+    setBarChartData(PriorityLevelData);
   };
 
   const handleSeeMore = () => {
-    navigate('/admin/tasks');
+    navigate("/admin/tasks");
   };
 
   // Fetch dashboard data and prepare chart data
   const getDashboardData = useCallback(async () => {
     try {
-      const response = await axiosInstance.get(API_PATHS.TASKS.GET_DASHBOARD_DATA);
+      const response = await axiosInstance.get(
+        API_PATHS.TASKS.GET_DASHBOARD_DATA
+      );
       if (response.data) {
-      setDashboardData(response.data);
-      prepareChartData(response.data?.charts || null)
-    }
-   } catch (error) {
-      console.error('Error fetching users:', error);
+        setDashboardData(response.data);
+        prepareChartData(response.data?.charts || null);
+      }
+    } catch (error) {
+      console.error("Error fetching users:", error);
     }
   }, []);
 
@@ -74,7 +76,7 @@ const AdminDashboard = () => {
         <div className="col-span-3">
           <h2 className="text-xl md:text-2xl">Hello {user?.name}</h2>
           <p className="text-xs md:text-[13px] text-gray-400 mt-1.5">
-            {moment().format('dddd Do MMM Y')}
+            {moment().format("dddd Do MMM Y")}
           </p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-5">
@@ -114,7 +116,11 @@ const AdminDashboard = () => {
           <div className="flex items-center justify-between">
             <h5 className="font-medium">Task Distribution</h5>
           </div>
-          <CustomPieChart data={pieChartData} colors={COLORS} nameKey="status" valueKey="value"
+          <CustomPieChart
+            data={pieChartData}
+            colors={COLORS}
+            nameKey="status"
+            valueKey="value"
           />
         </div>
 
@@ -122,15 +128,12 @@ const AdminDashboard = () => {
           <div className="flex items-center justify-between">
             <h5 className="font-medium">Task Priority Levels</h5>
           </div>
-          <CustomBarChart data={barChartData} 
-          xKey="priority" 
-           yKey="count"
-           />
+          <CustomBarChart data={barChartData} xKey="priority" yKey="count" />
         </div>
       </div>
 
       <div className="md:col-span-2">
-        <div className='card'></div>
+        <div className="card"></div>
         <div className="flex items-center justify-between">
           <h5 className="text-lg">Recent Tasks</h5>
           <button className="card-btn" onClick={handleSeeMore}>
@@ -144,4 +147,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-

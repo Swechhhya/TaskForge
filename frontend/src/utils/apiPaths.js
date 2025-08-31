@@ -10,8 +10,8 @@ export const API_PATHS = {
     GET_ALL_USERS: "/api/users/",
     GET_USER_BY_ID: (userId) => `/api/users/${userId}`, // <-- function now
     CREATE_USER: "/api/users",
-    GET_USER_DETAILS: (userId) => `/api/users/${userId}`, 
-    DELETE_USER: (userId) => `/api/users/${userId}`, 
+    GET_USER_DETAILS: (userId) => `/api/users/${userId}`,
+    DELETE_USER: (userId) => `/api/users/${userId}`,
   },
   TASKS: {
     GET_DASHBOARD_DATA: "/api/tasks/dashboard-data",

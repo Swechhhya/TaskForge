@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { PRIORITY_DATA } from "../../utils/data";
-import axiosInstance from '/src/utils/axiosInstance.js';
+import axiosInstance from "/src/utils/axiosInstance.js";
 import { API_PATHS } from "../../utils/apiPaths";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -16,10 +16,9 @@ import TodoListInput from "../../components/Inputs/TodoListInput";
 import AddAttachmentsInput from "../../components/Inputs/AddAttachmentsInput";
 import { useParams } from "react-router-dom";
 
-
 const CreateTask = () => {
   const location = useLocation();
- const { taskId } = useParams(); 
+  const { taskId } = useParams();
   const navigate = useNavigate();
 
   const [taskData, setTaskData] = useState({
@@ -263,7 +262,6 @@ const CreateTask = () => {
                   placeholder="Create App UI"
                   className="form-input"
                   value={taskData.dueDate || ""} // fallback to empty string
-
                   onChange={({ target }) =>
                     handleValueChange("dueDate", target.value)
                   }
@@ -295,7 +293,7 @@ const CreateTask = () => {
                 }
               />
             </div>
-            
+
             <div className="mt-3">
               <label className="text-xs font-medium text-slate-600">
                 Add Attachments

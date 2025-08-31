@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
-import axiosInstance from '/src/utils/axiosInstance.js';
+import axiosInstance from "/src/utils/axiosInstance.js";
 import { API_PATHS } from "../../utils/apiPaths";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import UserCard from "../../components/cards/UserCard";
@@ -66,7 +66,7 @@ const ManageUsers = () => {
             <UserCard key={user._id} userInfo={user} />
           ))}
         </div>
-        {console.log("allUsers",allUsers)}
+        {console.log("allUsers", allUsers)}
       </div>
     </DashboardLayout>
   );

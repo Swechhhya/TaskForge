@@ -1,22 +1,22 @@
-require('dotenv').config()
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const connectDB = require('./config/db');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const connectDB = require("./config/db");
 
-const authRoutes = require("./routes/authRoutes")
-const newRoutes = require("./routes/newRoutes")
-const taskRoutes = require("./routes/taskRoutes")
-const reportRoutes = require("./routes/reportRoutes")
+const authRoutes = require("./routes/authRoutes");
+const newRoutes = require("./routes/newRoutes");
+const taskRoutes = require("./routes/taskRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 
 const app = express();
 
 // Middleware to handle CORS
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: process.env.CLIENT_URL || "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
