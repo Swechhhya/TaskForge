@@ -133,7 +133,7 @@ const AdminDashboard = () => {
         <div className='card'></div>
         <div className="flex items-center justify-between">
           <h5 className="text-lg">Recent Tasks</h5>
-          <button className="card-btn" onClick={handleSeeMore}>
+          <button className="card-btn " onClick={handleSeeMore}>
             See All <LuArrowRight className="text-base" />
           </button>
         </div>

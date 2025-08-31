@@ -155,7 +155,11 @@ const generateToken = (userID) => {
 // @access Public
 const registerUser = async (req, res) => {
     try{
-        const { name, email, password, profileImageUrl, adminInviteToken} = req.body;
+        const { name, email, password, profileImageUrl, adminInviteToken } = req.body;
+        let profileImage = null;
+        if (req.file) {
+            profileImage = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+        }
 
         // Check if user already exists
         const userExists = await User.findOne({ email });

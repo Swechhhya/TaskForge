@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { LuChevronDown } from "react-icons/lu";
 
 const SelectDropdown = ({ options, value, onChange, placeholder }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (option) => {
     onChange(option);

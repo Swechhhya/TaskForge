@@ -60,10 +60,10 @@ return (
                 />
                  <button
                         type='button'
-                        className='w-8 h-8 flex items-center justify-between bg-red-500 text-white rounded-full absolute -bottom-0 -right-0'
+                        className='w-8 h-8 flex items-center justify-between bg-red-500 text-white rounded-full absolute -bottom-1 -right-1 button-remove hover:cursor-pointer'
                         onClick={handleRemoveImage}
                    >
-                        <LuTrash />
+                        <LuTrash className='ml-1.5'/>
                     </button>
                 </div>
              )}

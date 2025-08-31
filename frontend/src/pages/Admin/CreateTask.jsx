@@ -160,7 +160,7 @@ const CreateTask = () => {
           dueDate: taskInfo.dueDate
             ? moment(taskInfo.dueDate).format("YYYY-MM-DD")
             : null,
-          assignedTo: taskInfo?.assignedTo?.map((item) => item?.id) || [],
+          assignedTo: taskInfo?.assignedTo?.map((item) => item?._id) || [],
           todoChecklist:
             taskInfo?.todoChecklist?.map((item) => item?.text) || [],
           attachments: taskInfo?.attachments || [],
@@ -177,11 +177,11 @@ const CreateTask = () => {
       await axiosInstance.delete(API_PATHS.TASKS.DELETE_TASK(taskId));
 
       setOpenDeleteAlert(false);
-      toast.success("Expense details deleted successfully");
+      toast.success("Task deleted successfully");
       navigate("/admin/tasks");
     } catch (error) {
       console.error(
-        "Error deleting expense:",
+        "Error deleting task:",
         error.response?.data?.message || error.message
       );
     }
