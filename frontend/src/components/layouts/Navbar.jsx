@@ -18,7 +18,12 @@ const Navbar = ({ activeMenu }) => {
         )}
       </button>
 
-      <h2 className='text-lg font-medium text-black'>TaskForge</h2>
+      <div>
+  <h1 className="text-lg font-bold text-primary tracking-tight drop-shadow-sm">
+    TaskForge
+  </h1>
+  <div className="h-[1.5px] w-5 bg-primary  rounded"></div>
+</div>
 
       {openSideMenu && (
         <>

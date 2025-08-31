@@ -7,7 +7,7 @@ const AuthLayout = ({ children }) => {
       {/* Left Section: Branding + Form */}
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-8 sm:h-screen lg:pl-20  ">
         
-        {/* TaskForge Branding */}
+        {/* TaskForge Logo */}
         <div className="mb-12  text-left w-full">
   <h1 className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight drop-shadow-sm">
     TaskForge
