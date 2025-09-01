@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
-const PlaceHolder = require("../");
 
 const UserSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    profileImageUrl: { type: String, default: PlaceHolder },
-    role: { type: String, enum: ["admin", "user"], default: "user" }, // Role-based access
+    profileImageUrl: { 
+      type: String, 
+      default: "https://via.placeholder.com/150" // ✅ FIXED: Use a proper default
+    },
+    role: { type: String, enum: ["admin", "user"], default: "user" },
   },
   { timestamps: true }
 );
