@@ -86,6 +86,16 @@ const Login = () => {
 
           {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
 
+          {/* Forgot Password link */}
+          <div className="flex justify-end mb-3">
+            <Link
+              to="/forgot-password"
+              className="text-sm text-primary underline hover:opacity-80"
+            >
+              Forgot Password?
+            </Link>
+          </div>
+
           <button type="submit" className="btn-primary">
             LOGIN
           </button>

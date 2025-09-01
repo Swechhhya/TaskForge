@@ -21,6 +21,9 @@ import { Toaster } from "react-hot-toast";
 import SignUp from "./pages/Auth/SignUp";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 
+import ForgotPassword from "./pages/Auth/forgot-password";
+import ResetPassword from "./pages/Auth/reset-password";
+
 const App = () => {
   return (
     <UserProvider>
@@ -29,6 +32,10 @@ const App = () => {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+
+            {/* Forgot/Reset Password Routes */}
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
 
             {/* Admin Routes */}
             <Route element={<PrivateRoute allowedRoles={["admin"]} />}>

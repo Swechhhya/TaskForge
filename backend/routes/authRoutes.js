@@ -4,6 +4,8 @@ const {
   loginUser,
   getUserProfile,
   updateUserProfile,
+  forgotPassword,
+  resetPassword,
 } = require("../controllers/authController");
 const { protect } = require("../middlewares/authMiddleware");
 const upload = require("../middlewares/uploadMiddleware");
@@ -13,6 +15,8 @@ const router = express.Router();
 //Auth Routes
 router.post("/register", upload.single("image"), registerUser); //Register User
 router.post("/login", loginUser); //Login User
+router.post("/forgot-password", forgotPassword);
+router.post("/reset-password/:token", resetPassword);
 router.get("/profile", protect, getUserProfile); //Get User Profile
 router.put("/profile", protect, updateUserProfile); //Update Profile
 
