@@ -6,7 +6,7 @@ import { API_PATHS } from "../../utils/apiPaths";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import TaskStatusTabs from "../../components/TaskStatusTabs";
 import toast from "react-hot-toast";
-import TaskCard from "../../components/Cards/TaskCard.jsx";
+import TaskCard from "@/components/Cards/TaskCard"
 
 const ManageTasks = () => {
   const [allTasks, setAllTasks] = useState([]);
