@@ -22,10 +22,8 @@ const TaskCard = ({
     switch (status) {
       case "In Progress":
         return "text-cyan-500 bg-cyan-50 border border-cyan-500/10";
-
       case "Completed":
         return "text-lime-500 bg-lime-50 border border-lime-500/20";
-
       default:
         return "text-violet-500 bg-violet-50 border border-violet-500/10";
     }
@@ -35,14 +33,13 @@ const TaskCard = ({
     switch (priority) {
       case "Low":
         return "text-emerald-500 bg-emerald-50 border border-emerald-500/10";
-
       case "Medium":
         return "text-amber-500 bg-amber-50 border border-amber-500/10";
-
       default:
         return "text-rose-500 bg-rose-50 border border-rose-500/10";
     }
   };
+
   return (
     <div
       className="bg-white rounded-xl py-4 shadow-md shadow-gray-100 border border-gray-200/50 cursor-pointer"
@@ -78,9 +75,9 @@ const TaskCard = ({
           {description}
         </p>
         <p className="text-[13px] text-gray-700/80 font-medium mt-2 mb-2 leading-[18px]">
-          Task Done: {""}
+          Task Done:{" "}
           <span className="font-semibold text-gray-700">
-           {completedTodoCount || 0} / {todoChecklist?.length || 0}
+            {completedTodoCount || 0} / {todoChecklist?.length || 0}
           </span>
         </p>
         <Progress progress={progress} status={status} />
@@ -102,6 +99,7 @@ const TaskCard = ({
             </p>
           </div>
         </div>
+
         <div className="flex items-center justify-between mt-3">
           <AvatarGroup avatars={assignedTo || []} />
           {attachmentCount > 0 && (
