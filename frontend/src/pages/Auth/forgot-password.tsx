@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import Input from "../../components/Inputs/Input";
 import AuthLayout from "../../components/layouts/AuthLayout";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
 import { validateEmail } from "../../utils/validation";
-
-// Axios instance
-const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000", // Or your backend port
-});
+import toast from "react-hot-toast";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +22,7 @@ const ForgotPassword = () => {
     }
 
     if (!validateEmail(email)) {
-      setError("Please enter an email address.");
+      setError("Please enter a valid email address.");
       return;
     }
 
@@ -36,14 +32,21 @@ const ForgotPassword = () => {
 
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.FORGOT_PASSWORD, { email });
-
-      // Backend always responds with same message for security
-      setMessage(response.data.msg || "If an account with this email exists, a password reset link has been sent.");
+      
+      setMessage(response.data.msg || "Password reset link has been sent to your email.");
+      toast.success("Password reset email sent successfully!");
+      
+      // Clear form
+      setEmail("");
     } catch (err) {
       console.error("Forgot password request error:", err);
-
-      // Backend error fallback
-      setError("Please enter a valid email address.");
+      
+      const errorMessage = err.response?.data?.msg || 
+                          err.response?.data?.message || 
+                          "Failed to send reset email. Please try again.";
+      
+      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -53,7 +56,7 @@ const ForgotPassword = () => {
     <AuthLayout>
       <div className="lg:w-[100%]">
         <h3 className="text-xl font-semibold text-black">Forgot Password</h3>
-        <p className="text-xs text-slate-700 mt-[7px] mb-5 capitalize">
+        <p className="text-xs text-slate-700 mt-[7px] mb-5">
           Enter your email and we’ll send you a password reset link.
         </p>
 
@@ -76,6 +79,15 @@ const ForgotPassword = () => {
           >
             {loading ? "Sending..." : "Send Reset Link"}
           </button>
+          
+          <div className="mt-4 text-center">
+            <a 
+              href="/login" 
+              className="text-sm text-primary underline hover:opacity-80"
+            >
+              Back to Login
+            </a>
+          </div>
         </form>
       </div>
     </AuthLayout>

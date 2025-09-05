@@ -138,9 +138,21 @@ const forgotPassword = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(404).json({ msg: "User not found" });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "15m" });
-    console.log("FRONTEND_URL in production:", process.env.FRONTEND_URL);
-    const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+    // Use longer expiry for production to account for email delivery delays
+    const tokenExpiry = process.env.NODE_ENV === 'production' ? '30m' : '15m';
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: tokenExpiry });
+    
+    // Dynamic frontend URL based on environment
+    const frontendUrl = process.env.FRONTEND_URL || 
+                       process.env.CLIENT_URL || 
+                       (process.env.NODE_ENV === 'production' 
+                         ? 'https://your-app-domain.com' 
+                         : 'http://localhost:5173');
+    
+    const resetLink = `${frontendUrl}/reset-password/${token}`;
+    
+    console.log(`Password reset requested for: ${email}`);
+    console.log(`Reset link: ${resetLink}`);
 
     const htmlMessage = `
       <p>Hello ${user.name},</p>
@@ -148,20 +160,36 @@ const forgotPassword = async (req, res) => {
       <p><a href="${resetLink}" style="display:inline-block;padding:10px 20px;background:#4CAF50;color:white;text-decoration:none;border-radius:5px;">Reset Password</a></p>
       <p>If button doesn’t work, copy/paste this URL:</p>
       <p>${resetLink}</p>
-      <p>Expires in 15 minutes.</p>
+      <p>This link expires in ${tokenExpiry}.</p>
+      <p>If you didn't request this, please ignore this email.</p>
+      <br>
+      <p>Best regards,<br>TaskForge Team</p>
     `;
 
-    await sendEmail({
-      email: user.email,
-      subject: "Password Reset Request",
-      message: `Click here to reset: ${resetLink}`,
-      html: htmlMessage,
-    });
+    try {
+      await sendEmail({
+        email: user.email,
+        subject: "TaskForge - Password Reset Request",
+        message: `Click here to reset your password: ${resetLink}`,
+        html: htmlMessage,
+      });
+      
+      console.log(`✅ Password reset email sent successfully to: ${email}`);
+    } catch (emailError) {
+      console.error(`❌ Failed to send password reset email to ${email}:`, emailError);
+      return res.status(500).json({ 
+        msg: "Failed to send password reset email. Please try again later." 
+      });
+    }
 
-    res.json({ msg: "Password reset link sent to your email." });
+    res.json({ 
+      msg: "If an account with this email exists, a password reset link has been sent." 
+    });
   } catch (err) {
     console.error("Forgot password error:", err.message);
-    res.status(500).json({ msg: "Server error" });
+    res.status(500).json({ 
+      msg: "Unable to process password reset request. Please try again later." 
+    });
   }
 };
 
