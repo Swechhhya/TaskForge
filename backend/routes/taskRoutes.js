@@ -11,6 +11,7 @@ const {
   deleteTask,
   getTasks,
 } = require("../controllers/taskController");
+const { validateTaskCreation } = require("../middlewares/validation");
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ router.get("/dashboard-data", protect, getDashboardData);
 router.get("/user-dashboard-data", protect, getUserDashboardData);
 router.get("/", protect, getTasks); //Get all tasks (Admin:all, User: assigned)
 router.get("/:id", protect, getTaskById); //Get task by ID
-router.post("/", protect, adminOnly, createTask); //Create a task (Admin Only)
+router.post("/", protect, adminOnly, validateTaskCreation, createTask); //Create a task (Admin Only)
 router.put("/:id", protect, updateTask); //Update task details
 router.delete("/:id", protect, adminOnly, deleteTask); //Delete a task (Admin Only)
 router.put("/:id/status", protect, updateTaskStatus); //Update task status
